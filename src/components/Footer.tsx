@@ -32,15 +32,33 @@ export function Footer() {
               estudio. Anímate a coser conmigo.
             </p>
             <div className="mt-5 flex gap-4 text-ink-soft">
-              <Link href="#" aria-label="Instagram" className="hover:text-ink">
+              <Link
+                href="https://www.instagram.com/luwcoco"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="hover:text-ink"
+              >
                 <InstagramIcon />
               </Link>
-              <Link href="#" aria-label="TikTok" className="hover:text-ink">
+              <Link
+                href="https://www.tiktok.com/@luwcoco"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="hover:text-ink"
+              >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16.6 5.1c-.9-.8-1.5-2-1.6-3.1h-3.2v13.7c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.3 0 .6 0 .9.1V9.6c-.3 0-.6-.1-.9-.1-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V8.4c1.2.9 2.7 1.4 4.3 1.4V6.6c-.9 0-1.9-.3-2.6-1.5Z"/>
                 </svg>
               </Link>
-              <Link href="#" aria-label="YouTube" className="hover:text-ink">
+              <Link
+                href="https://youtube.com/@luwcoco"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="hover:text-ink"
+              >
                 <YoutubeIcon />
               </Link>
             </div>

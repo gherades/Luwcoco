@@ -19,7 +19,7 @@ const testimonials = [
 const stats = [
   { value: "+2.400", label: "patrones descargados" },
   { value: "4.9/5", label: "valoración media" },
-  { value: "+30k", label: "en redes sociales" },
+  { value: "+350k", label: "en redes sociales" },
 ];
 
 export function Testimonials() {
@@ -60,7 +60,8 @@ export function Testimonials() {
         </div>
 
         <p className="mt-6 text-center text-xs text-ink-soft/70">
-          Testimonios de ejemplo para esta demo de diseño.
+          Testimonios y valoración de ejemplo para esta demo de diseño — el
+          dato de seguidores en redes sociales sí es real.
         </p>
       </div>
     </section>
