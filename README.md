@@ -103,13 +103,18 @@ npx serve out   # opcional, para previsualizarlo
 ## Despliegue en GitHub Pages
 
 El repo incluye `.github/workflows/deploy-pages.yml`, que compila y
-publica automáticamente en cada push a `main`. Solo hace falta un paso
-manual, una vez:
+publica en una rama `gh-pages` en cada push a `main` (usando
+[peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages),
+más simple y fiable que el método nativo `actions/deploy-pages` para un
+sitio sencillo). Pasos, una sola vez:
 
-1. En GitHub → **Settings → Pages**.
-2. En "Source", elige **GitHub Actions** (no "Deploy from a branch").
-3. Haz push/merge a `main` y en la pestaña **Actions** verás el deploy.
-   El sitio queda en `https://gherades.github.io/Luwcoco/`.
+1. Deja que el workflow corra al menos una vez (push a `main` o
+   "Run workflow" manual en la pestaña Actions) para que se cree la rama
+   `gh-pages`.
+2. En GitHub → **Settings → Pages** → "Source", elige
+   **Deploy from a branch**, rama **gh-pages**, carpeta **/(root)**.
+3. El sitio queda en `https://gherades.github.io/Luwcoco/` en un par de
+   minutos.
 
 Si el repo cambia de nombre, actualiza `repoName` en `next.config.ts` (se
 usa como `basePath` para que los assets carguen bien bajo esa ruta).
