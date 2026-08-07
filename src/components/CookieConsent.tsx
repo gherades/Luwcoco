@@ -48,7 +48,7 @@ export function CookieConsent() {
           Usamos cookies propias y de terceros para recordar tus preferencias
           y entender cómo se usa esta demo. No las usaremos con fines de
           analítica a menos que las aceptes. Más información en nuestra{" "}
-          <Link href="#" className="underline">
+          <Link href="/privacidad" className="underline">
             Política de privacidad
           </Link>
           .

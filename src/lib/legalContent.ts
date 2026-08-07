@@ -7,7 +7,7 @@ export const termsSections: LegalSection[] = [
   {
     heading: "Información general",
     paragraphs: [
-      "¡Bienvenido a Luwcoco! Los términos “nosotros”, “nos” y “nuestro” se refieren al Luwcoco. El Luwcoco dirige esta tienda y sitio web, incluyendo toda la información, contenido, características, herramientas, productos y servicios relacionados para ofrecerle a usted, el cliente, una experiencia de compra selecta (los “Servicios”). Luwcoco es Tecnología de Shopify, que nos permite ofrecerle los Servicios.",
+      "¡Bienvenido a Luwcoco! Los términos “nosotros”, “nos” y “nuestro” se refieren al Luwcoco. El Luwcoco dirige esta tienda y sitio web, incluyendo toda la información, contenido, características, herramientas, productos y servicios relacionados para ofrecerle a usted, el cliente, una experiencia de compra selecta (los “Servicios”).",
       "Los siguientes términos y condiciones, junto con cualquier política a la que se hace referencia en este documento (estos “Términos del Servicio” o “Términos”) describen sus derechos y responsabilidades cuando utiliza los Servicios.",
       "Lea atentamente estos Términos del Servicio, ya que incluyen información importante sobre sus derechos legales y cubren áreas como garantía, descargo de responsabilidad y limitación de responsabilidad.",
       "Al visitar, interactuar con o utilizar nuestros Servicios, usted acepta estar sujeto a estos Términos del Servicio y nuestra Política de privacidad. Si no está de acuerdo con estos Términos del Servicio o Política de privacidad, no debe utilizar ni acceder a nuestros Servicios.",
@@ -54,8 +54,8 @@ export const termsSections: LegalSection[] = [
     heading: "Sección 6 - Propiedad intelectual",
     paragraphs: [
       "Nuestros Servicios, incluyendo pero sin limitarse a todas las marcas registradas, marcas, textos, muestras, imágenes, gráficos, reseñas de productos, videos y audios, y el diseño, selección y disposición de los mismos, son propiedad del Luwcoco, su afiliado o licenciante y están protegidos por patentes de EE. UU. y extranjeras, derechos de autor y otras leyes de propiedad intelectual.",
-      "Estos Términos le permiten utilizar los Servicios únicamente para su uso personal y no comercial. No debe reproducir, distribuir, modificar, crear trabajos derivados de, exhibir públicamente, ejecutar públicamente, republicar, descargar, almacenar o transmitir ningún material de los Servicios sin nuestro consentimiento previo por escrito. Salvo que se disponga expresamente en este documento, nada de estos Términos otorga ni se interpretará como que le otorga una licencia u otros derechos a usted bajo ninguna patente, marca registrada, derechos de autor u otra propiedad intelectual de Luwcoco, Shopify o cualquier tercero. El uso no autorizado de los Servicios puede constituir una violación de las leyes de propiedad intelectual federales y estatales. Todos los derechos no expresamente otorgados aquí están reservados por el Luwcoco.",
-      "Los nombres, logos, nombres de productos y servicios, diseños y eslóganes del Luwcoco son marcas registradas del Luwcoco o su afiliado o licenciante. No debe utilizar dicha marca registrada sin el permiso previo por escrito del Luwcoco. El nombre, logo, los nombres de productos y servicios, los diseños y los eslóganes de Shopify son marcas registradas de Shopify. Todos los demás nombres, logo, nombres de productos y servicios, diseños y eslóganes en los Servicios son marcas registradas de sus respectivos propietarios.",
+      "Estos Términos le permiten utilizar los Servicios únicamente para su uso personal y no comercial. No debe reproducir, distribuir, modificar, crear trabajos derivados de, exhibir públicamente, ejecutar públicamente, republicar, descargar, almacenar o transmitir ningún material de los Servicios sin nuestro consentimiento previo por escrito. Salvo que se disponga expresamente en este documento, nada de estos Términos otorga ni se interpretará como que le otorga una licencia u otros derechos a usted bajo ninguna patente, marca registrada, derechos de autor u otra propiedad intelectual de Luwcoco o cualquier tercero. El uso no autorizado de los Servicios puede constituir una violación de las leyes de propiedad intelectual federales y estatales. Todos los derechos no expresamente otorgados aquí están reservados por el Luwcoco.",
+      "Los nombres, logos, nombres de productos y servicios, diseños y eslóganes del Luwcoco son marcas registradas del Luwcoco o su afiliado o licenciante. No debe utilizar dicha marca registrada sin el permiso previo por escrito del Luwcoco. Todos los demás nombres, logo, nombres de productos y servicios, diseños y eslóganes en los Servicios son marcas registradas de sus respectivos propietarios.",
     ],
   },
   {
@@ -75,20 +75,14 @@ export const termsSections: LegalSection[] = [
     ],
   },
   {
-    heading: "Sección 9 - Relación con Shopify",
+    heading: "Sección 9 - Política de privacidad",
     paragraphs: [
-      "El Luwcoco opera con tecnología de Shopify, los que nos permite ofrecerle los Servicios. Sin embargo, cualquier venta o compra que realice en nuestra tienda se realiza directamente con el Luwcoco. Al utilizar los Servicios, usted reconoce y acepta que Shopify no es responsable de ningún aspecto de las ventas entre usted y el Luwcoco, incluida cualquier lesión, daño o pérdida resultante de la compra de productos y servicios. Por la presente, usted exonera expresamente a Shopify y sus afiliados de cualquier reclamación, daño y responsabilidad que surjan de o estén relacionados con su compra y transacción con el Luwcoco.",
+      "Toda la información personal que recogemos a través de los Servicios es objeto de nuestra Política de privacidad. Al utilizar los Servicios, usted reconoce que ha leído esta Política de privacidad.",
+      "La información que envíe a través de los Servicios (por ejemplo, al contactarnos, suscribirse a novedades o completar una compra) será tratada por nosotros y, cuando sea necesario para prestarle el servicio, por los proveedores descritos en nuestra Política de privacidad, como nuestro procesador de pagos. Revise nuestra Política de privacidad para obtener más información sobre cómo utilizamos su información personal.",
     ],
   },
   {
-    heading: "Sección 10 - Política de privacidad",
-    paragraphs: [
-      "Toda la información personal que recogemos a través de los Servicios es objeto de nuestra Política de privacidad, y cierta información personal puede ser objeto de la Política de privacidad de Shopify. Al utilizar los Servicios, usted reconoce que ha leído esta Política de privacidad.",
-      "Debido a que los Servicios están alojados por Shopify, Shopify recoge y procesa información personal sobre su acceso y uso de los Servicios para ofrecerle y mejorar nuestros Servicios. La información que envíe a los Servicios será transmitida y compartida con Shopify, además de con terceros que pueden estar ubicados en otro país que no sea donde usted reside, con el fin de ofrecerle los servicios. Revise nuestra Política de privacidad para obtener más información sobre cómo nosotros, Shopify, y nuestros partners utilizamos su información personal.",
-    ],
-  },
-  {
-    heading: "Sección 11 - Comentarios",
+    heading: "Sección 10 - Comentarios",
     paragraphs: [
       "Si presenta, sube, publica, envía un correo electrónico o transmite de otra manera ideas, sugerencias, comentarios, revisiones, propuestas, planes u otro contenido (colectivamente llamado “comentario”), nos otorga una licencia perpetua, mundial, sublicenciable y libre de regalías para usar, reproducir, modificar, publicar, distribuir y mostrar dicho comentario en cualquier medio para cualquier propósito, incluido el uso comercial. Podemos, por ejemplo, utilizar nuestros derechos bajo esta licencia para operar, proporcionar, evaluar, mejorar, optimizar y promover los Servicios y para cumplir con nuestras obligaciones y ejercer nuestros derechos de conformidad con los Términos del Servicio.",
       "También declara y garantiza que: (i) usted posee o tiene todos los derechos necesarios sobre todos los comentarios; (ii) ha revelado cualquier compensación o incentivo recibido en relación con el envío de su comentario; y (iii) que su comentario cumple con estos Términos. No tenemos ni tendremos obligación alguna (1) de mantener la confidencialidad de su comentario; (2) de pagar una compensación por su comentario; o (3) de responder a su comentario.",
@@ -97,67 +91,67 @@ export const termsSections: LegalSection[] = [
     ],
   },
   {
-    heading: "Sección 12 - Errores, inexactitudes y omisiones",
+    heading: "Sección 11 - Errores, inexactitudes y omisiones",
     paragraphs: [
       "Ocasionalmente puede haber información sobre o en los Servicios que contenga errores tipográficos, inexactitudes u omisiones que puedan estar relacionadas con la descripción del producto, estrategias de precios, promociones, ofertas, cargos de envío del producto, tiempo de tránsito y disponibilidad. Nos reservamos el derecho de corregir cualquier error, inexactitud u omisión y de cambiar o actualizar información o cancelar pedidos si alguna información es inexacta en cualquier momento sin previo aviso (incluso después de que haya realizado su pedido).",
     ],
   },
   {
-    heading: "Sección 13 - Usos prohibidos",
+    heading: "Sección 12 - Usos prohibidos",
     paragraphs: [
-      "Usted podrá acceder y utilizar los Servicios únicamente con fines lícitos. No puede acceder ni usar los Servicios, directa o indirectamente: (a) para ningún propósito ilegal o malicioso; (b) para infringir cualquier regulación, norma, ley internacional, federal, provincial o estatal, u ordenanzas locales; (c) para infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de otros; (d) para acosar, abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o dañar a cualquiera de nuestros empleados o cualquier otra persona; (e) para transmitir información falsa o engañosa; (f) para enviar, recibir a sabiendas, subir, descargar, usar o reutilizar cualquier material que no cumpla con estos Términos; (g) para transmitir o procurar el envío de cualquier material publicitario o promocional, incluido cualquier \"correo basura\", \"carta en cadena\", \"correo no deseado\" o cualquier otra solicitud similar; (h) para suplantar o intentar suplantar a cualquier otra persona o entidad; o (i) participar en cualquier otra conducta que restrinja o inhiba el uso o disfrute de los Servicios por parte de cualquier persona, o que, según lo determinemos, pueda dañar al Luwcoco, Shopify o los usuarios de los Servicios, o exponerlos a algún tipo de responsabilidad.",
+      "Usted podrá acceder y utilizar los Servicios únicamente con fines lícitos. No puede acceder ni usar los Servicios, directa o indirectamente: (a) para ningún propósito ilegal o malicioso; (b) para infringir cualquier regulación, norma, ley internacional, federal, provincial o estatal, u ordenanzas locales; (c) para infringir o violar nuestros derechos de propiedad intelectual o los derechos de propiedad intelectual de otros; (d) para acosar, abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o dañar a cualquiera de nuestros empleados o cualquier otra persona; (e) para transmitir información falsa o engañosa; (f) para enviar, recibir a sabiendas, subir, descargar, usar o reutilizar cualquier material que no cumpla con estos Términos; (g) para transmitir o procurar el envío de cualquier material publicitario o promocional, incluido cualquier \"correo basura\", \"carta en cadena\", \"correo no deseado\" o cualquier otra solicitud similar; (h) para suplantar o intentar suplantar a cualquier otra persona o entidad; o (i) participar en cualquier otra conducta que restrinja o inhiba el uso o disfrute de los Servicios por parte de cualquier persona, o que, según lo determinemos, pueda dañar al Luwcoco o los usuarios de los Servicios, o exponerlos a algún tipo de responsabilidad.",
       "Además, usted acepta no: (a) subir o transmitir virus o cualquier otro tipo de código malicioso que sea o pueda ser utilizado de cualquier manera que afecte la funcionalidad o el funcionamiento de los Servicios; (b) reproducir, duplicar, copiar, extraer, vender, revender o explotar cualquier parte de los Servicios; (c) recoger o hacer seguimiento de la información personal de otros; (d) correo no deseado, phish, pharm, o pretextar los servicios; (e) utilizar cualquier robot, araña, scraping, herramientas de recopilación y extracción de datos, dispositivos o procesos automáticos, herramientas de inteligencia artificial (como IA agéntica) o medios automatizados o manuales para acceder a los Servicios; o (f) interferir con, eludir o eludir las funciones de seguridad o autorización, encabezado de exclusión de robots u otras medidas que empleemos para restringir el acceso a los Servicios. Nos reservamos el derecho de suspender, desactivar o cancelar su cuenta en cualquier momento, sin previo aviso, si determinamos que ha infringido alguna parte de estos Términos.",
     ],
   },
   {
-    heading: "Sección 14 - Agentes",
+    heading: "Sección 13 - Agentes",
     paragraphs: [
-      "14.1 Esta sección (\"Términos del Agente\") se aplica si usted usa, permite, habilita o provoca la implementación de un Agente para acceder, usar o interactuar con cualquier Servicio. \"Agente\" significa cualquier software o servicio que realiza acciones autónomas o semiautónomas en nombre o por instrucción de cualquier persona o entidad y que puede ejecutarse en nombre o utilizando el dispositivo de la persona, sin supervisión directa.",
-      "14.2 Ningún Agente podrá acceder, usar o interactuar con los Servicios a menos que, en todo momento, se identifique y opere en estricta conformidad con los requisitos de la sección 14.4 a continuación. Además, ningún Agente podrá acceder, usar o interactuar con los Servicios si hemos solicitado que el Agente se abstenga de acceder, usar o interactuar con cualquier servicio.",
-      "14.3 Podemos limitar, aplicando incluso medidas técnicas, el acceso, uso e interacción de cualquier Agente con los Servicios y cómo lo hace.",
-      "14.4 Los Agentes deben: (i) en toda solicitud HTTP/HTTPS, identificar que la solicitud proviene de un Agente y revelar el nombre del Agente incluyendo lo siguiente en la cadena del campo user-agent de la solicitud: \"Agente/[nombre del agente]\"; (ii) no ocultar ni crear confusión sobre que cualquier acceso, uso o interacción proviene de un Agente, como (a) imitando el comportamiento humano y los patrones de interacción, o (b) completando o eludiendo los CAPTCHA o medidas destinadas a distinguir el uso de ordenadores del de humanos, (iii) responder con veracidad a cualquier pregunta o instrucción que busque determinar si las interacciones provienen de un humano o un ordenador, (iv) no eludir ni evitar de otra manera cualquier medida destinada a bloquear, limitar, modificar o controlar si los Agentes acceden, usan o interactúan con los Servicios y cómo lo hacen.",
+      "13.1 Esta sección (\"Términos del Agente\") se aplica si usted usa, permite, habilita o provoca la implementación de un Agente para acceder, usar o interactuar con cualquier Servicio. \"Agente\" significa cualquier software o servicio que realiza acciones autónomas o semiautónomas en nombre o por instrucción de cualquier persona o entidad y que puede ejecutarse en nombre o utilizando el dispositivo de la persona, sin supervisión directa.",
+      "13.2 Ningún Agente podrá acceder, usar o interactuar con los Servicios a menos que, en todo momento, se identifique y opere en estricta conformidad con los requisitos de la sección 13.4 a continuación. Además, ningún Agente podrá acceder, usar o interactuar con los Servicios si hemos solicitado que el Agente se abstenga de acceder, usar o interactuar con cualquier servicio.",
+      "13.3 Podemos limitar, aplicando incluso medidas técnicas, el acceso, uso e interacción de cualquier Agente con los Servicios y cómo lo hace.",
+      "13.4 Los Agentes deben: (i) en toda solicitud HTTP/HTTPS, identificar que la solicitud proviene de un Agente y revelar el nombre del Agente incluyendo lo siguiente en la cadena del campo user-agent de la solicitud: \"Agente/[nombre del agente]\"; (ii) no ocultar ni crear confusión sobre que cualquier acceso, uso o interacción proviene de un Agente, como (a) imitando el comportamiento humano y los patrones de interacción, o (b) completando o eludiendo los CAPTCHA o medidas destinadas a distinguir el uso de ordenadores del de humanos, (iii) responder con veracidad a cualquier pregunta o instrucción que busque determinar si las interacciones provienen de un humano o un ordenador, (iv) no eludir ni evitar de otra manera cualquier medida destinada a bloquear, limitar, modificar o controlar si los Agentes acceden, usan o interactúan con los Servicios y cómo lo hacen.",
     ],
   },
   {
-    heading: "Sección 15 - Rescisión",
+    heading: "Sección 14 - Rescisión",
     paragraphs: [
       "Podemos rescindir este acuerdo o su acceso a los Servicios (o cualquier parte del mismo) a nuestro exclusivo criterio en cualquier momento sin previo aviso, y usted seguirá siendo responsable de todos los importes adeudados hasta la fecha de rescisión inclusive.",
       "Las siguientes secciones continuarán aplicándose después de cualquier rescisión: Propiedad intelectual, Comentarios, Rescisión, Descargo de responsabilidad de Garantías, Limitación de responsabilidad, Indemnización, Discrepancia, Renuncia; Acuerdo completo, Cesión, Ley aplicable, Política de privacidad y cualesquiera otras disposiciones que por su naturaleza deban sobrevivir a la rescisión.",
     ],
   },
   {
-    heading: "Sección 16 - Descargo de responsabilidad de garantías",
+    heading: "Sección 15 - Descargo de responsabilidad de garantías",
     paragraphs: [
       "La información presentada en o a través de los Servicios se proporciona únicamente con fines informativos generales.",
     ],
   },
   {
-    heading: "Sección 21 - Cesión",
+    heading: "Sección 16 - Cesión",
     paragraphs: [
       "...y cualquier intento de este tipo será nulo. Podemos transferir, ceder o delegar estos Términos y nuestros derechos y obligaciones sin tener su consentimiento ni notificárselo.",
     ],
   },
   {
-    heading: "Sección 22 - Ley aplicable",
+    heading: "Sección 17 - Ley aplicable",
     paragraphs: [
       "Estos Términos del Servicio y cualquier acuerdo por separado mediante el cual le proporcionemos Servicios se regirán e interpretarán de conformidad con los tribunales federales y estatales o territoriales de la jurisdicción donde el Luwcoco tiene su sede. Usted y el Luwcoco aceptan la jurisdicción y competencia personal de dichos tribunales.",
     ],
   },
   {
-    heading: "Sección 23 - Encabezados",
+    heading: "Sección 18 - Encabezados",
     paragraphs: [
       "Los encabezados utilizados en este acuerdo se incluyen únicamente para su comodidad y no limitarán ni afectarán de otro modo a estos Términos.",
     ],
   },
   {
-    heading: "Sección 24 - Cambios a los Términos del Servicio",
+    heading: "Sección 19 - Cambios a los Términos del Servicio",
     paragraphs: [
       "Puede revisar la versión más actualizada de los Términos del Servicio en cualquier momento en esta página.",
       "Nos reservamos el derecho, a nuestra entera discreción, de actualizar, cambiar o reemplazar cualquier parte de estos Términos del Servicio mediante la publicación de la actualización y los cambios en nuestro sitio web. Es responsabilidad suya revisar nuestro sitio web periódicamente para ver si hay cambios. Le avisaremos de cualquier cambio material a estos Términos de acuerdo con la ley aplicable, y dichos cambios entrarán en vigor en la fecha especificada en el aviso. Su uso continuo o acceso a los Servicios después de la publicación de cualquier cambio en estos Términos del Servicio constituye la aceptación de dichos cambios.",
     ],
   },
   {
-    heading: "Sección 25 - Información de contacto",
+    heading: "Sección 20 - Información de contacto",
     paragraphs: [
       "Las preguntas sobre los Términos del Servicio deben enviarse a info@luwcoco.com.",
       "A continuación figura nuestra información de contacto:",
@@ -168,3 +162,66 @@ export const termsSections: LegalSection[] = [
 
 export const refundPolicy =
   "Debido a la naturaleza digital de nuestros productos, no se aceptan devoluciones, cancelaciones ni reembolsos una vez realizada la compra.";
+
+export const privacySections: LegalSection[] = [
+  {
+    heading: "Responsable del tratamiento",
+    paragraphs: [
+      "El responsable del tratamiento de tus datos personales es Luwcoco (en adelante, “nosotros”), contactable en info@luwcoco.com. Esta política explica qué datos recogemos a través de esta web, para qué los usamos y qué derechos tienes sobre ellos.",
+    ],
+  },
+  {
+    heading: "Qué datos recogemos",
+    paragraphs: [
+      "Datos de contacto: si usas el formulario de contacto, recogemos tu nombre, correo electrónico, teléfono (opcional) y el mensaje que nos escribes.",
+      "Datos de suscripción: si te suscribes a novedades, recogemos tu dirección de correo electrónico.",
+      "Datos de compra: cuando compras un patrón, el pago se procesa a través de Stripe. No almacenamos los datos de tu tarjeta en ningún momento; Stripe los trata directamente conforme a su propia política de privacidad.",
+      "Datos de navegación: mediante cookies, según lo que hayas aceptado en el aviso de cookies del sitio (ver más abajo).",
+    ],
+  },
+  {
+    heading: "Para qué usamos tus datos",
+    paragraphs: [
+      "Para responder a tus consultas a través del formulario de contacto.",
+      "Para enviarte novedades y nuevos patrones, si te has suscrito voluntariamente.",
+      "Para gestionar la compra y entrega digital de los patrones.",
+      "Para entender el uso del sitio con fines estadísticos, únicamente si aceptas las cookies analíticas.",
+    ],
+  },
+  {
+    heading: "Base legal",
+    paragraphs: [
+      "Tratamos tus datos con base en tu consentimiento (formulario de contacto, suscripción, cookies analíticas) y en la ejecución del contrato de compraventa cuando adquieres un patrón.",
+    ],
+  },
+  {
+    heading: "Con quién compartimos tus datos",
+    paragraphs: [
+      "No vendemos ni cedemos tus datos a terceros con fines comerciales. Compartimos datos únicamente con los proveedores necesarios para prestar el servicio: nuestro procesador de pagos (Stripe) para gestionar las compras, y nuestro proveedor de hosting para publicar el sitio. Estos proveedores pueden estar ubicados fuera del Espacio Económico Europeo; en ese caso, se apoyan en las garantías previstas por la normativa de protección de datos (como las cláusulas contractuales tipo).",
+    ],
+  },
+  {
+    heading: "Cookies",
+    paragraphs: [
+      "Usamos cookies esenciales para el funcionamiento del sitio y, solo si las aceptas expresamente en el banner de cookies, cookies analíticas para entender el uso del sitio. Puedes cambiar tu elección en cualquier momento desde el enlace “Preferencias de cookies” del pie de página.",
+    ],
+  },
+  {
+    heading: "Plazo de conservación",
+    paragraphs: [
+      "Conservamos tus datos mientras sean necesarios para la finalidad para la que se recogieron (por ejemplo, mientras estés suscrito a las novedades) y, en el caso de las compras, durante el plazo legalmente exigido para cumplir con nuestras obligaciones fiscales y contables.",
+    ],
+  },
+  {
+    heading: "Tus derechos",
+    paragraphs: [
+      "Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiéndonos a info@luwcoco.com. También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es) si consideras que el tratamiento de tus datos no se ajusta a la normativa.",
+    ],
+  },
+  {
+    heading: "Cambios en esta política",
+    paragraphs: [
+      "Podemos actualizar esta Política de privacidad ocasionalmente. Publicaremos cualquier cambio en esta misma página.",
+    ],
+  },
+];
