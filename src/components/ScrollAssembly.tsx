@@ -8,12 +8,10 @@ import { withBasePath } from "@/lib/basePath";
 
 export function ScrollAssembly({
   icon,
-  photoImage,
   patternImage,
   productName,
 }: {
   icon: IconName;
-  photoImage?: string;
   patternImage?: string;
   productName: string;
 }) {
@@ -27,16 +25,14 @@ export function ScrollAssembly({
   useMotionValueEvent(scrollYProgress, "change", (v) => setProgress(v));
 
   const pieces = iconPieces[icon];
-  const steps = pieces.length + (photoImage ? 1 : 0);
-  const stepSize = 1 / steps;
+  const stepSize = 1 / pieces.length;
   const revealAt = (i: number) =>
     Math.min(1, Math.max(0, (progress - i * stepSize) / stepSize));
 
-  const photoOpacity = photoImage ? revealAt(pieces.length) : 0;
   const finished = progress > 0.97;
 
   return (
-    <div ref={sectionRef} className="relative" style={{ height: `${steps * 55 + 45}vh` }}>
+    <div ref={sectionRef} className="relative" style={{ height: `${pieces.length * 55 + 45}vh` }}>
       <div className="sticky top-24 flex h-[65vh] items-center justify-center overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-denim/40 to-cream-dim">
         <svg
           viewBox="0 0 120 120"
@@ -63,20 +59,8 @@ export function ScrollAssembly({
           })}
         </svg>
 
-        {photoImage && (
-          <div className="absolute inset-0" style={{ opacity: photoOpacity }}>
-            <Image
-              src={withBasePath(photoImage)}
-              alt={`${productName} — foto del patrón terminado`}
-              fill
-              sizes="(min-width: 640px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        )}
-
         <span className="absolute bottom-4 rounded-full bg-cream/90 px-4 py-1.5 text-xs font-medium text-ink-soft backdrop-blur">
-          {finished ? "¡Terminado! 🧵" : "Sigue bajando para coserlo…"}
+          {finished ? "¡Terminado! 🧵 Sigue bajando para ver la bolsa real" : "Sigue bajando para coserlo…"}
         </span>
 
         {patternImage && (

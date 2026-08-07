@@ -19,6 +19,8 @@ export type Product = {
   photoImage?: string;
   /** Portada real del patrón en PDF (luwcoco.com) */
   patternImage?: string;
+  /** Fotos adicionales del producto acabado, para la galería */
+  gallery?: string[];
 };
 
 export const products: Product[] = [
@@ -53,6 +55,7 @@ export const products: Product[] = [
     isBestseller: true,
     photoImage: "/images/maxibag-photo.jpg",
     patternImage: "/images/maxibag-pattern.jpg",
+    gallery: ["/images/maxibag-photo-2.jpg"],
   },
   {
     slug: "pantalon-fluido-palazzo",

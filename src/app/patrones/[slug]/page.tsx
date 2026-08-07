@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProduct, levelLabels, products } from "@/lib/products";
 import { ScrollAssembly } from "@/components/ScrollAssembly";
+import { ProductGallery } from "@/components/ProductGallery";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { FadeIn } from "@/components/FadeIn";
 import { FileText, PlayCircle, Ruler } from "lucide-react";
@@ -21,12 +22,26 @@ export default async function ProductPage({
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
       <div className="grid gap-12 sm:grid-cols-2 sm:items-start">
-        <ScrollAssembly
-          icon={product.icon}
-          photoImage={product.photoImage}
-          patternImage={product.patternImage}
-          productName={product.name}
-        />
+        <div>
+          <ScrollAssembly
+            icon={product.icon}
+            patternImage={product.patternImage}
+            productName={product.name}
+          />
+
+          {product.photoImage && (
+            <FadeIn>
+              <h2 className="mt-2 font-display text-lg font-medium">
+                La bolsa terminada
+              </h2>
+              <ProductGallery
+                photoImage={product.photoImage}
+                gallery={product.gallery}
+                productName={product.name}
+              />
+            </FadeIn>
+          )}
+        </div>
 
         <FadeIn delay={0.1} className="sm:sticky sm:top-24">
           {(product.isNew || product.isBestseller) && (
