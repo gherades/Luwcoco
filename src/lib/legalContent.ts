@@ -163,6 +163,29 @@ export const termsSections: LegalSection[] = [
 export const refundPolicy =
   "Debido a la naturaleza digital de nuestros productos, no se aceptan devoluciones, cancelaciones ni reembolsos una vez realizada la compra.";
 
+export const shippingSections: LegalSection[] = [
+  {
+    heading: "1. Productos digitales",
+    paragraphs: [
+      "Actualmente, Luwcoco comercializa exclusivamente patrones digitales descargables.",
+      "No se realizan envíos físicos.",
+    ],
+  },
+  {
+    heading: "2. Entrega del producto",
+    paragraphs: [
+      "Una vez confirmado el pago, el cliente recibirá acceso inmediato a la descarga del archivo digital a través de la plataforma de compra o mediante el correo electrónico facilitado.",
+      "Si el cliente no recibe el enlace de descarga o tiene problemas para acceder al archivo, podrá contactar en: info@luwcoco.com",
+    ],
+  },
+  {
+    heading: "3. Productos físicos (futuro)",
+    paragraphs: [
+      "En caso de que en el futuro se incorporen productos físicos a la tienda, esta política será actualizada para incluir información relativa a plazos, costes y condiciones de envío.",
+    ],
+  },
+];
+
 export const privacySections: LegalSection[] = [
   {
     heading: "Responsable del tratamiento",
