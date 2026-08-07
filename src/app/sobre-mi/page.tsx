@@ -1,9 +1,25 @@
+import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
-import { PatternIcon } from "@/components/PatternIcon";
+import { SewingDoodle } from "@/components/SewingDoodle";
+import {
+  MeasuringTapeIcon,
+  NeedleThread,
+  PinIcon,
+  ScissorsIcon,
+  ThreadSpool,
+} from "@/components/SewingMotifs";
+import { withBasePath } from "@/lib/basePath";
+
+const photos = [
+  { src: "/images/about-1.jpg", rotate: -4 },
+  { src: "/images/about-2.jpg", rotate: 3 },
+  { src: "/images/about-3.jpg", rotate: 2 },
+  { src: "/images/about-4.jpg", rotate: -3 },
+];
 
 export default function SobreMiPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
+    <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:px-24">
       <FadeIn>
         <span className="text-xs uppercase tracking-[0.2em] text-thread">
           Sobre mí
@@ -13,35 +29,125 @@ export default function SobreMiPage() {
         </h1>
       </FadeIn>
 
-      <FadeIn delay={0.1} className="mt-8 flex justify-center">
-        <div className="flex h-40 w-40 items-center justify-center rounded-full bg-thread text-cream">
-          <PatternIcon icon="pouch" className="h-20 w-20" animated />
-        </div>
-      </FadeIn>
+      <div className="relative mt-14 space-y-14">
+        <SewingDoodle
+          rotate={-12}
+          delay={0.1}
+          className="absolute -right-16 top-0 hidden text-thread/70 lg:block"
+        >
+          <NeedleThread className="h-14 w-14" />
+        </SewingDoodle>
+        <FadeIn delay={0.1} className="text-ink-soft">
+          <p>
+            Soy la persona que está detrás de LUWCOCO. Soy arquitecta de
+            profesión, pero la creatividad siempre ha sido una parte
+            fundamental de mi vida. Mi madre me regaló una máquina de coser
+            cuando tenía 16 años, se quedó guardada durante años… esperando
+            el momento adecuado.
+          </p>
+        </FadeIn>
 
-      <FadeIn delay={0.2} className="mt-10 space-y-5 text-ink-soft">
-        <p>
-          Soy arquitecta de profesión, pero la creatividad siempre ha sido
-          una parte fundamental de mi vida. Mi madre me regaló una máquina
-          de coser cuando tenía 16 años, y se quedó guardada durante años
-          esperando el momento adecuado.
-        </p>
-        <p>
-          En 2020, como a tantas personas durante el confinamiento, me
-          surgió la necesidad de explorar algo creativo. Saqué la máquina
-          de coser sin imaginar que terminaría cambiando mi vida por
-          completo.
-        </p>
-        <p>
-          A día de hoy creo contenido en redes sociales donde enseño
-          procesos, ideas e inspiración para tus proyectos. Me encanta
-          enseñar a coser, pero aún más me encanta mostrarte de lo que
-          eres capaz cuando entiendes el proceso.
-        </p>
-        <p className="font-display text-xl italic text-ink">
-          Mi objetivo es acompañarte paso a paso, demostrarte que crear tu
-          propio armario es posible.
-        </p>
+        <div className="relative">
+          <SewingDoodle
+            rotate={10}
+            delay={0.15}
+            className="absolute -left-14 top-2 hidden text-coral/80 lg:block"
+          >
+            <ScissorsIcon className="h-12 w-12" />
+          </SewingDoodle>
+          <FadeIn delay={0.15} className="text-ink-soft">
+            <p>
+              En 2020, como a tantas personas durante el COVID, me surgió la
+              necesidad de explorar algo creativo. Saqué la máquina de coser
+              sin imaginar que terminaría cambiando mi vida por completo.
+            </p>
+          </FadeIn>
+        </div>
+
+        <div className="relative">
+          <SewingDoodle
+            rotate={-8}
+            delay={0.1}
+            className="absolute -right-16 top-0 hidden text-thread/70 lg:block"
+          >
+            <ThreadSpool className="h-14 w-14" />
+          </SewingDoodle>
+          <FadeIn delay={0.1} className="text-ink-soft">
+            <p>
+              A día de hoy creo contenido en redes sociales en donde enseño
+              procesos, ideas, inspiración para vuestros proyectos, dónde
+              comprar telas o incluso cómo es mi vida como arquitecta y
+              creadora de contenido de costura.
+            </p>
+          </FadeIn>
+        </div>
+
+        <FadeIn delay={0.1} className="relative rounded-3xl bg-thread-dark px-6 py-10 text-center text-cream sm:px-12">
+          <SewingDoodle
+            rotate={14}
+            delay={0.2}
+            className="absolute -top-6 left-1/2 -translate-x-1/2 text-blush"
+          >
+            <PinIcon className="h-10 w-10" />
+          </SewingDoodle>
+          <p className="font-display text-2xl italic leading-snug sm:text-3xl">
+            Coser te da libertad, originalidad, creatividad, imaginación e
+            ilusión de crear cosas. Te da la capacidad de diseñar ropa que
+            realmente te representa.
+          </p>
+        </FadeIn>
+
+        <div className="relative">
+          <SewingDoodle
+            rotate={12}
+            delay={0.1}
+            className="absolute -left-14 top-2 hidden text-coral/80 lg:block"
+          >
+            <MeasuringTapeIcon className="h-12 w-12" />
+          </SewingDoodle>
+          <FadeIn delay={0.1} className="text-ink-soft">
+            <p>
+              LUWCOCO nace de una idea clara: poder crear lo que yo quiera —
+              un espacio donde comparto todo lo que he aprendido y sigo
+              aprendiendo. Me encanta enseñar a coser, pero aún más me
+              encanta mostrarte de lo que eres capaz cuando entiendes el
+              proceso.
+            </p>
+          </FadeIn>
+        </div>
+
+        <FadeIn delay={0.1}>
+          <p className="font-display text-xl italic text-ink">
+            Mi objetivo es acompañarte paso a paso, demostrarte que crear tu
+            propio armario es posible!!!
+          </p>
+        </FadeIn>
+      </div>
+
+      <FadeIn delay={0.1} className="mt-20">
+        <h2 className="text-center font-display text-2xl font-medium">
+          Cosido y llevado por mí
+        </h2>
+        <div className="mt-10 grid grid-cols-2 gap-5 sm:gap-8">
+          {photos.map((photo, i) => (
+            <FadeIn key={photo.src} delay={i * 0.1}>
+              <div
+                className="overflow-hidden rounded-2xl border-4 border-cream bg-cream shadow-md"
+                style={{ transform: `rotate(${photo.rotate}deg)` }}
+              >
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={withBasePath(photo.src)}
+                    alt="Lucía llevando una prenda cosida por ella"
+                    fill
+                    sizes="(min-width: 640px) 25vw, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </FadeIn>
     </div>
   );
