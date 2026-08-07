@@ -13,6 +13,8 @@ export type Product = {
   description: string;
   isNew?: boolean;
   isBestseller?: boolean;
+  /** Stripe Payment Link (dashboard.stripe.com/payment-links). Sin backend: funciona en sitio estático. */
+  paymentLink?: string;
 };
 
 export const products: Product[] = [

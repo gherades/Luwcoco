@@ -58,7 +58,7 @@ export default async function ProductPage({
           </div>
 
           <div className="mt-8">
-            <CheckoutButton slug={product.slug} />
+            <CheckoutButton paymentLink={product.paymentLink} />
             <p className="mt-3 text-xs text-ink-soft">
               Entrega digital inmediata tras el pago. Pago seguro procesado
               por Stripe.
