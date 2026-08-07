@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookiePreferencesLink } from "./CookiePreferencesLink";
 
 function InstagramIcon() {
   return (
@@ -75,6 +76,7 @@ export function Footer() {
               <li><Link href="#" className="hover:text-ink">Política de reembolso</Link></li>
               <li><Link href="#" className="hover:text-ink">Política de privacidad</Link></li>
               <li><Link href="#" className="hover:text-ink">Términos del servicio</Link></li>
+              <CookiePreferencesLink />
             </ul>
           </div>
         </div>
