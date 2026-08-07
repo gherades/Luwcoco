@@ -83,7 +83,7 @@ export default function SobreMiPage() {
           >
             <PinIcon className="h-10 w-10" />
           </SewingDoodle>
-          <StitchReveal delay={0.15} lineClassName="border-cream/50" dotClassName="bg-blush">
+          <StitchReveal delay={0.15} threadClassName="stroke-cream/60" needleClassName="text-blush">
             <p className="font-display text-2xl italic leading-snug sm:text-3xl">
               Coser te da libertad, originalidad, creatividad, imaginación e
               ilusión de crear cosas. Te da la capacidad de diseñar ropa que
