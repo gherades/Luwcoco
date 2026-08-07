@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 const links = [
   { href: "/", label: "Home" },
@@ -28,7 +29,7 @@ export function Header() {
 
         <Link href="/" className="mx-auto sm:mx-0">
           <Image
-            src="/images/logo-luwcoco.png"
+            src={withBasePath("/images/logo-luwcoco.png")}
             alt="luwcoco — sewn by luwcoco"
             width={300}
             height={120}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { PatternIcon } from "./PatternIcon";
 import { levelLabels, type Product } from "@/lib/products";
+import { withBasePath } from "@/lib/basePath";
 
 const bgByCategory: Record<Product["category"], string> = {
   bolsos: "from-denim/70 to-cream-dim",
@@ -33,7 +34,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           )}
           {product.patternImage ? (
             <Image
-              src={product.patternImage}
+              src={withBasePath(product.patternImage)}
               alt={`Patrón ${product.name} — ${product.subtitle}`}
               fill
               sizes="(min-width: 1024px) 25vw, 50vw"

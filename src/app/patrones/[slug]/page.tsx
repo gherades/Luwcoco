@@ -5,6 +5,7 @@ import { PatternIcon } from "@/components/PatternIcon";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { FadeIn } from "@/components/FadeIn";
 import { FileText, PlayCircle, Ruler } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -27,7 +28,7 @@ export default async function ProductPage({
             <div>
               <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-cream-dim">
                 <Image
-                  src={product.photoImage}
+                  src={withBasePath(product.photoImage)}
                   alt={`${product.name} — foto del patrón terminado`}
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
@@ -38,7 +39,7 @@ export default async function ProductPage({
               {product.patternImage && (
                 <div className="relative mt-4 aspect-[4/5] w-28 overflow-hidden rounded-xl border border-line">
                   <Image
-                    src={product.patternImage}
+                    src={withBasePath(product.patternImage)}
                     alt={`Portada del patrón ${product.name}`}
                     fill
                     sizes="112px"
