@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
 
@@ -26,12 +27,14 @@ export function Header() {
         </button>
 
         <Link href="/" className="mx-auto sm:mx-0">
-          <span className="block text-[10px] uppercase tracking-[0.3em] text-ink-soft text-center">
-            cosido por
-          </span>
-          <span className="font-display text-2xl font-semibold tracking-tight">
-            luwcoco
-          </span>
+          <Image
+            src="/images/logo-luwcoco.png"
+            alt="luwcoco — sewn by luwcoco"
+            width={300}
+            height={120}
+            priority
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
 
         <nav className="hidden gap-8 text-sm font-medium sm:flex">

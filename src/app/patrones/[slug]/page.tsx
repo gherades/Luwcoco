@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getProduct, levelLabels, products } from "@/lib/products";
 import { PatternIcon } from "@/components/PatternIcon";
 import { CheckoutButton } from "@/components/CheckoutButton";
@@ -22,9 +23,35 @@ export default async function ProductPage({
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
       <div className="grid gap-12 sm:grid-cols-2 sm:items-start">
         <FadeIn className="sm:sticky sm:top-24">
-          <div className="flex aspect-square items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-denim/50 to-cream-dim">
-            <PatternIcon icon={product.icon} className="h-56 w-56 text-ink/70" animated />
-          </div>
+          {product.photoImage ? (
+            <div>
+              <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-cream-dim">
+                <Image
+                  src={product.photoImage}
+                  alt={`${product.name} — foto del patrón terminado`}
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              {product.patternImage && (
+                <div className="relative mt-4 aspect-[4/5] w-28 overflow-hidden rounded-xl border border-line">
+                  <Image
+                    src={product.patternImage}
+                    alt={`Portada del patrón ${product.name}`}
+                    fill
+                    sizes="112px"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex aspect-square items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-denim/50 to-cream-dim">
+              <PatternIcon icon={product.icon} className="h-56 w-56 text-ink/70" animated />
+            </div>
+          )}
         </FadeIn>
 
         <FadeIn delay={0.1}>

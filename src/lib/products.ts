@@ -15,6 +15,10 @@ export type Product = {
   isBestseller?: boolean;
   /** Stripe Payment Link (dashboard.stripe.com/payment-links). Sin backend: funciona en sitio estático. */
   paymentLink?: string;
+  /** Foto real del producto acabado (luwcoco.com) */
+  photoImage?: string;
+  /** Portada real del patrón en PDF (luwcoco.com) */
+  patternImage?: string;
 };
 
 export const products: Product[] = [
@@ -31,6 +35,8 @@ export const products: Product[] = [
     description:
       "El básico que no falla: una bolsa de deporte forrada, con asas reforzadas y bolsillo interior. Patrón pensado para tu primera bolsa estructurada.",
     isBestseller: true,
+    photoImage: "/images/duffbag-photo.jpg",
+    patternImage: "/images/duffbag-pattern.jpg",
   },
   {
     slug: "maxi-bag-playa",
@@ -45,6 +51,8 @@ export const products: Product[] = [
     description:
       "Una tote gigante para playa, piscina o para llevar todo tu proyecto de costura a cuestas. El patrón perfecto para empezar.",
     isBestseller: true,
+    photoImage: "/images/maxibag-photo.jpg",
+    patternImage: "/images/maxibag-pattern.jpg",
   },
   {
     slug: "pantalon-fluido-palazzo",
