@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #faf6f0;
+  --color-cream-dim: #f2ece2;
+  --color-ink: #201d1a;
+  --color-ink-soft: #55504a;
+  --color-thread: #45647d;
+  --color-thread-dark: #2f4a5f;
+  --color-coral: #d9805c;
+  --color-blush: #f0bcc4;
+  --color-denim: #c3d3dc;
+  --color-line: #e4dcd0;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-thread: var(--color-thread);
+  --color-thread-dark: var(--color-thread-dark);
+  --color-coral: var(--color-coral);
+  --color-blush: var(--color-blush);
+  --color-denim: var(--color-denim);
+  --color-line: var(--color-line);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-blush);
+  color: var(--color-ink);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes stitch-draw {
+  from {
+    stroke-dashoffset: 240;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.stitch-line {
+  stroke-dasharray: 6 6;
+  animation: stitch-draw 2.4s linear infinite;
+}
