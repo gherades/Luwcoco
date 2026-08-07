@@ -131,6 +131,39 @@ export const termsSections: LegalSection[] = [
       "La información presentada en o a través de los Servicios se proporciona únicamente con fines informativos generales.",
     ],
   },
+  {
+    heading: "Sección 21 - Cesión",
+    paragraphs: [
+      "...y cualquier intento de este tipo será nulo. Podemos transferir, ceder o delegar estos Términos y nuestros derechos y obligaciones sin tener su consentimiento ni notificárselo.",
+    ],
+  },
+  {
+    heading: "Sección 22 - Ley aplicable",
+    paragraphs: [
+      "Estos Términos del Servicio y cualquier acuerdo por separado mediante el cual le proporcionemos Servicios se regirán e interpretarán de conformidad con los tribunales federales y estatales o territoriales de la jurisdicción donde el Luwcoco tiene su sede. Usted y el Luwcoco aceptan la jurisdicción y competencia personal de dichos tribunales.",
+    ],
+  },
+  {
+    heading: "Sección 23 - Encabezados",
+    paragraphs: [
+      "Los encabezados utilizados en este acuerdo se incluyen únicamente para su comodidad y no limitarán ni afectarán de otro modo a estos Términos.",
+    ],
+  },
+  {
+    heading: "Sección 24 - Cambios a los Términos del Servicio",
+    paragraphs: [
+      "Puede revisar la versión más actualizada de los Términos del Servicio en cualquier momento en esta página.",
+      "Nos reservamos el derecho, a nuestra entera discreción, de actualizar, cambiar o reemplazar cualquier parte de estos Términos del Servicio mediante la publicación de la actualización y los cambios en nuestro sitio web. Es responsabilidad suya revisar nuestro sitio web periódicamente para ver si hay cambios. Le avisaremos de cualquier cambio material a estos Términos de acuerdo con la ley aplicable, y dichos cambios entrarán en vigor en la fecha especificada en el aviso. Su uso continuo o acceso a los Servicios después de la publicación de cualquier cambio en estos Términos del Servicio constituye la aceptación de dichos cambios.",
+    ],
+  },
+  {
+    heading: "Sección 25 - Información de contacto",
+    paragraphs: [
+      "Las preguntas sobre los Términos del Servicio deben enviarse a info@luwcoco.com.",
+      "A continuación figura nuestra información de contacto:",
+      "Luwcoco — info@luwcoco.com",
+    ],
+  },
 ];
 
 export const refundPolicy =
