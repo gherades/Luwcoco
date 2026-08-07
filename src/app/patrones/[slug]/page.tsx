@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getProduct, levelLabels, products } from "@/lib/products";
 import { ScrollAssembly } from "@/components/ScrollAssembly";
 import { ProductGallery } from "@/components/ProductGallery";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { FadeIn } from "@/components/FadeIn";
 import { FileText, PlayCircle, Ruler } from "lucide-react";
@@ -71,12 +72,7 @@ export default async function ProductPage({
             <div className="flex items-center gap-3">
               <PlayCircle size={16} className="text-thread" />
               {product.videoUrl ? (
-                <a
-                  href={product.videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 hover:text-ink"
-                >
+                <a href="#video" className="underline underline-offset-2 hover:text-ink">
                   {product.format} — ver vídeo tutorial
                 </a>
               ) : (
@@ -94,6 +90,15 @@ export default async function ProductPage({
           </div>
         </FadeIn>
       </div>
+
+      {product.videoUrl && (
+        <FadeIn id="video" className="mx-auto mt-16 max-w-3xl scroll-mt-24">
+          <h2 className="mb-4 text-center font-display text-2xl font-medium">
+            Vídeo tutorial paso a paso
+          </h2>
+          <VideoEmbed videoUrl={product.videoUrl} title={`Tutorial ${product.name}`} />
+        </FadeIn>
+      )}
     </div>
   );
 }

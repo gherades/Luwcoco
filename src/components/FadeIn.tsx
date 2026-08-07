@@ -12,13 +12,16 @@ export function FadeIn({
   children,
   delay = 0,
   className,
+  id,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  id?: string;
 }) {
   return (
     <motion.div
+      id={id}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
