@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { SewingDoodle } from "@/components/SewingDoodle";
+import { SewingSection } from "@/components/SewingSection";
 import {
   MeasuringTapeIcon,
   NeedleThread,
@@ -29,15 +30,13 @@ export default function SobreMiPage() {
         </h1>
       </FadeIn>
 
-      <div className="relative mt-14 space-y-14">
-        <SewingDoodle
+      <div className="mt-14 space-y-14">
+        <SewingSection
+          icon={<NeedleThread className="h-14 w-14" />}
+          side="right"
           rotate={-12}
-          delay={0.1}
-          className="absolute -right-16 top-0 hidden text-thread/70 lg:block"
+          colorClassName="text-thread/70"
         >
-          <NeedleThread className="h-14 w-14" />
-        </SewingDoodle>
-        <FadeIn delay={0.1} className="text-ink-soft">
           <p>
             Soy la persona que está detrás de LUWCOCO. Soy arquitecta de
             profesión, pero la creatividad siempre ha sido una parte
@@ -45,42 +44,35 @@ export default function SobreMiPage() {
             cuando tenía 16 años, se quedó guardada durante años… esperando
             el momento adecuado.
           </p>
-        </FadeIn>
+        </SewingSection>
 
-        <div className="relative">
-          <SewingDoodle
-            rotate={10}
-            delay={0.15}
-            className="absolute -left-14 top-2 hidden text-coral/80 lg:block"
-          >
-            <ScissorsIcon className="h-12 w-12" />
-          </SewingDoodle>
-          <FadeIn delay={0.15} className="text-ink-soft">
-            <p>
-              En 2020, como a tantas personas durante el COVID, me surgió la
-              necesidad de explorar algo creativo. Saqué la máquina de coser
-              sin imaginar que terminaría cambiando mi vida por completo.
-            </p>
-          </FadeIn>
-        </div>
+        <SewingSection
+          icon={<ScissorsIcon className="h-12 w-12" />}
+          side="left"
+          rotate={10}
+          delay={0.15}
+          colorClassName="text-coral/80"
+        >
+          <p>
+            En 2020, como a tantas personas durante el COVID, me surgió la
+            necesidad de explorar algo creativo. Saqué la máquina de coser
+            sin imaginar que terminaría cambiando mi vida por completo.
+          </p>
+        </SewingSection>
 
-        <div className="relative">
-          <SewingDoodle
-            rotate={-8}
-            delay={0.1}
-            className="absolute -right-16 top-0 hidden text-thread/70 lg:block"
-          >
-            <ThreadSpool className="h-14 w-14" />
-          </SewingDoodle>
-          <FadeIn delay={0.1} className="text-ink-soft">
-            <p>
-              A día de hoy creo contenido en redes sociales en donde enseño
-              procesos, ideas, inspiración para vuestros proyectos, dónde
-              comprar telas o incluso cómo es mi vida como arquitecta y
-              creadora de contenido de costura.
-            </p>
-          </FadeIn>
-        </div>
+        <SewingSection
+          icon={<ThreadSpool className="h-14 w-14" />}
+          side="right"
+          rotate={-8}
+          colorClassName="text-thread/70"
+        >
+          <p>
+            A día de hoy creo contenido en redes sociales en donde enseño
+            procesos, ideas, inspiración para vuestros proyectos, dónde
+            comprar telas o incluso cómo es mi vida como arquitecta y
+            creadora de contenido de costura.
+          </p>
+        </SewingSection>
 
         <FadeIn delay={0.1} className="relative rounded-3xl bg-thread-dark px-6 py-10 text-center text-cream sm:px-12">
           <SewingDoodle
@@ -97,24 +89,20 @@ export default function SobreMiPage() {
           </p>
         </FadeIn>
 
-        <div className="relative">
-          <SewingDoodle
-            rotate={12}
-            delay={0.1}
-            className="absolute -left-14 top-2 hidden text-coral/80 lg:block"
-          >
-            <MeasuringTapeIcon className="h-12 w-12" />
-          </SewingDoodle>
-          <FadeIn delay={0.1} className="text-ink-soft">
-            <p>
-              LUWCOCO nace de una idea clara: poder crear lo que yo quiera —
-              un espacio donde comparto todo lo que he aprendido y sigo
-              aprendiendo. Me encanta enseñar a coser, pero aún más me
-              encanta mostrarte de lo que eres capaz cuando entiendes el
-              proceso.
-            </p>
-          </FadeIn>
-        </div>
+        <SewingSection
+          icon={<MeasuringTapeIcon className="h-12 w-12" />}
+          side="left"
+          rotate={12}
+          colorClassName="text-coral/80"
+        >
+          <p>
+            LUWCOCO nace de una idea clara: poder crear lo que yo quiera —
+            un espacio donde comparto todo lo que he aprendido y sigo
+            aprendiendo. Me encanta enseñar a coser, pero aún más me
+            encanta mostrarte de lo que eres capaz cuando entiendes el
+            proceso.
+          </p>
+        </SewingSection>
 
         <FadeIn delay={0.1}>
           <p className="font-display text-xl italic text-ink">
