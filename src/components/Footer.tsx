@@ -73,9 +73,9 @@ export function Footer() {
               Legal
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><Link href="#" className="hover:text-ink">Política de reembolso</Link></li>
+              <li><Link href="/reembolso" className="hover:text-ink">Política de reembolso</Link></li>
               <li><Link href="#" className="hover:text-ink">Política de privacidad</Link></li>
-              <li><Link href="#" className="hover:text-ink">Términos del servicio</Link></li>
+              <li><Link href="/terminos" className="hover:text-ink">Términos del servicio</Link></li>
               <CookiePreferencesLink />
             </ul>
           </div>
