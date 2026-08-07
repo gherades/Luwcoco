@@ -21,6 +21,10 @@ export type Product = {
   patternImage?: string;
   /** Fotos adicionales del producto acabado, para la galería */
   gallery?: string[];
+  /** Página de instrucciones/materiales real del PDF, para la galería */
+  instructionsImage?: string;
+  /** Enlace al vídeo tutorial de YouTube */
+  videoUrl?: string;
 };
 
 export const products: Product[] = [
@@ -39,6 +43,8 @@ export const products: Product[] = [
     isBestseller: true,
     photoImage: "/images/duffbag-photo.jpg",
     patternImage: "/images/duffbag-pattern.jpg",
+    instructionsImage: "/images/duffbag-instructions.jpg",
+    videoUrl: "https://youtu.be/urvVmllzof0",
   },
   {
     slug: "maxi-bag-playa",
@@ -56,6 +62,8 @@ export const products: Product[] = [
     photoImage: "/images/maxibag-photo.jpg",
     patternImage: "/images/maxibag-pattern.jpg",
     gallery: ["/images/maxibag-photo-2.jpg"],
+    instructionsImage: "/images/maxibag-instructions.jpg",
+    videoUrl: "https://youtu.be/DfvNZb_U5nE",
   },
   {
     slug: "pantalon-fluido-palazzo",

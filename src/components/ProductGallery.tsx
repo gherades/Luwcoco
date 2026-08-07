@@ -7,24 +7,35 @@ import { withBasePath } from "@/lib/basePath";
 export function ProductGallery({
   photoImage,
   gallery = [],
+  instructionsImage,
   productName,
 }: {
   photoImage: string;
   gallery?: string[];
+  instructionsImage?: string;
   productName: string;
 }) {
-  const images = [photoImage, ...gallery];
+  const images = [photoImage, ...gallery, ...(instructionsImage ? [instructionsImage] : [])];
   const [active, setActive] = useState(0);
+  const isDocument = images[active] === instructionsImage;
 
   return (
     <div className="mt-6">
-      <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-cream-dim">
+      <div
+        className={`relative aspect-square overflow-hidden rounded-3xl border border-line ${
+          isDocument ? "bg-white" : "bg-cream-dim"
+        }`}
+      >
         <Image
           src={withBasePath(images[active])}
-          alt={`${productName} — foto del patrón terminado`}
+          alt={
+            isDocument
+              ? `Instrucciones y materiales del patrón ${productName}`
+              : `${productName} — foto del patrón terminado`
+          }
           fill
           sizes="(min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className={isDocument ? "object-contain p-2" : "object-cover"}
         />
       </div>
 
@@ -36,7 +47,7 @@ export function ProductGallery({
               onClick={() => setActive(i)}
               className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border transition-colors sm:h-20 sm:w-20 ${
                 active === i ? "border-ink" : "border-line hover:border-ink/40"
-              }`}
+              } ${img === instructionsImage ? "bg-white" : ""}`}
               aria-label={`Ver foto ${i + 1} de ${productName}`}
             >
               <Image
@@ -44,7 +55,7 @@ export function ProductGallery({
                 alt=""
                 fill
                 sizes="80px"
-                className="object-cover"
+                className={img === instructionsImage ? "object-contain p-0.5" : "object-cover"}
               />
             </button>
           ))}

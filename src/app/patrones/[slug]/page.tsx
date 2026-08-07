@@ -37,6 +37,7 @@ export default async function ProductPage({
               <ProductGallery
                 photoImage={product.photoImage}
                 gallery={product.gallery}
+                instructionsImage={product.instructionsImage}
                 productName={product.name}
               />
             </FadeIn>
@@ -69,7 +70,18 @@ export default async function ProductPage({
             </div>
             <div className="flex items-center gap-3">
               <PlayCircle size={16} className="text-thread" />
-              <span>{product.format}</span>
+              {product.videoUrl ? (
+                <a
+                  href={product.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-ink"
+                >
+                  {product.format} — ver vídeo tutorial
+                </a>
+              ) : (
+                <span>{product.format}</span>
+              )}
             </div>
           </div>
 
