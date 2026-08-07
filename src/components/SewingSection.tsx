@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { SewingDoodle } from "./SewingDoodle";
-import { FadeIn } from "./FadeIn";
+import { StitchReveal } from "./StitchReveal";
 
 export function SewingSection({
   icon,
@@ -35,9 +35,9 @@ export function SewingSection({
       >
         {icon}
       </SewingDoodle>
-      <FadeIn delay={delay} className="text-ink-soft">
-        {children}
-      </FadeIn>
+      <StitchReveal delay={delay}>
+        <div className="text-ink-soft">{children}</div>
+      </StitchReveal>
     </div>
   );
 }

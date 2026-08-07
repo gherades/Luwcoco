@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { SewingDoodle } from "@/components/SewingDoodle";
 import { SewingSection } from "@/components/SewingSection";
+import { StitchReveal } from "@/components/StitchReveal";
 import {
   MeasuringTapeIcon,
   NeedleThread,
@@ -82,11 +83,13 @@ export default function SobreMiPage() {
           >
             <PinIcon className="h-10 w-10" />
           </SewingDoodle>
-          <p className="font-display text-2xl italic leading-snug sm:text-3xl">
-            Coser te da libertad, originalidad, creatividad, imaginación e
-            ilusión de crear cosas. Te da la capacidad de diseñar ropa que
-            realmente te representa.
-          </p>
+          <StitchReveal delay={0.15} lineClassName="border-cream/50" dotClassName="bg-blush">
+            <p className="font-display text-2xl italic leading-snug sm:text-3xl">
+              Coser te da libertad, originalidad, creatividad, imaginación e
+              ilusión de crear cosas. Te da la capacidad de diseñar ropa que
+              realmente te representa.
+            </p>
+          </StitchReveal>
         </FadeIn>
 
         <SewingSection
@@ -104,12 +107,12 @@ export default function SobreMiPage() {
           </p>
         </SewingSection>
 
-        <FadeIn delay={0.1}>
+        <StitchReveal delay={0.1}>
           <p className="font-display text-xl italic text-ink">
             Mi objetivo es acompañarte paso a paso, demostrarte que crear tu
             propio armario es posible!!!
           </p>
-        </FadeIn>
+        </StitchReveal>
       </div>
 
       <FadeIn delay={0.1} className="mt-20">
