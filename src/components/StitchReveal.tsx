@@ -1,15 +1,20 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 const STITCH_DURATION = 2;
 const BOB_TIMES = [0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 1];
+const LINE_LENGTH = 300;
 
-const threadVariants: Variants = {
-  hidden: { pathLength: 0 },
+// The dashed thread is a static path (fixed "10 8" dash pattern) revealed by
+// an animated clip-rect. Animating `pathLength` directly (Framer's usual
+// line-draw trick) replaces any manual strokeDasharray with its own
+// fractional one, which silently turns the dashes into a solid line.
+const revealVariants: Variants = {
+  hidden: { width: 0 },
   visible: (startAt: number) => ({
-    pathLength: 1,
+    width: LINE_LENGTH,
     transition: { duration: STITCH_DURATION, delay: startAt, ease: "linear" },
   }),
 };
@@ -65,6 +70,8 @@ export function StitchReveal({
   needleClassName?: string;
   knotClassName?: string;
 }) {
+  const clipId = useId();
+
   // Computed here (plain JS) rather than inside the variants' `visible`
   // callbacks: doing the arithmetic in-callback caused Framer Motion to
   // apply the transition with no delay in this project's setup.
@@ -83,15 +90,17 @@ export function StitchReveal({
           preserveAspectRatio="none"
           className="absolute inset-0 h-full w-full overflow-visible"
         >
-          <motion.path
+          <clipPath id={clipId}>
+            <motion.rect x={0} y={0} height={28} variants={revealVariants} custom={delay} />
+          </clipPath>
+          <path
             d="M0 14 H300"
             fill="none"
             strokeWidth={2}
             strokeLinecap="round"
             strokeDasharray="10 8"
             className={threadClassName}
-            variants={threadVariants}
-            custom={delay}
+            clipPath={`url(#${clipId})`}
           />
           <motion.circle
             cx={294}
