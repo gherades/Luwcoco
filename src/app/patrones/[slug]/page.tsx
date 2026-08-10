@@ -4,6 +4,7 @@ import { ScrollAssembly } from "@/components/ScrollAssembly";
 import { ProductGallery } from "@/components/ProductGallery";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { FadeIn } from "@/components/FadeIn";
 import { FileText, PlayCircle, Ruler } from "lucide-react";
 
@@ -86,7 +87,8 @@ export default async function ProductPage({
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 space-y-3">
+            <AddToCartButton slug={product.slug} />
             <CheckoutButton paymentLink={product.paymentLink} />
             <p className="mt-3 text-xs text-ink-soft">
               Entrega digital inmediata tras el pago. Pago seguro procesado
