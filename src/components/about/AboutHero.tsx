@@ -19,7 +19,7 @@ function StaticCentrepiece() {
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 text-blush/70 sm:h-80 sm:w-80"
+        className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 text-paper/45 sm:h-36 sm:w-36"
       >
         <CompassMark className="h-full w-full" />
       </motion.div>
