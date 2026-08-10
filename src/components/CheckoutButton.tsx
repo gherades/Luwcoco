@@ -15,7 +15,7 @@ export function CheckoutButton({ paymentLink }: { paymentLink?: string }) {
         className="flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
       >
         <Lock size={15} />
-        Comprar con Stripe
+        Comprar
         <ExternalLink size={14} className="opacity-70" />
       </a>
     );
@@ -32,7 +32,7 @@ export function CheckoutButton({ paymentLink }: { paymentLink?: string }) {
         className="flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
       >
         <Lock size={15} />
-        Comprar con Stripe
+        Comprar
       </button>
       {notice && (
         <p className="mt-3 rounded-lg bg-cream-dim px-3 py-2 text-xs text-ink-soft">
