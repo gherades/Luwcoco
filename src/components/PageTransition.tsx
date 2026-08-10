@@ -23,28 +23,20 @@ function getMotionPreferenceServer() {
 
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  // children stay wrapped in the same structure regardless of the reduced
-  // motion preference, so correcting it after hydration never remounts the
-  // page — only the transition duration/values change.
   const canAnimate = useSyncExternalStore(
     subscribeMotionPreference,
     getMotionPreference,
     getMotionPreferenceServer,
   );
 
+  // `children` render directly, never wrapped in an AnimatePresence/motion.div:
+  // doing that here made every nested whileInView animation on the new page
+  // (e.g. the Sobre mí stitch reveal) snap instantly to its end state instead
+  // of tweening. The coral seam sweep below is what actually reads as "the
+  // page changed" and doesn't wrap or touch page content at all.
   return (
     <>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={pathname}
-          initial={{ opacity: canAnimate ? 0 : 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: canAnimate ? 0 : 1 }}
-          transition={{ duration: canAnimate ? 0.28 : 0, ease: EASE_DRAPE }}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      {children}
       {canAnimate && (
         <AnimatePresence>
           <motion.div
@@ -53,7 +45,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
             className="pointer-events-none fixed inset-y-0 left-0 z-[80] w-[3px] bg-coral"
             initial={{ x: "0vw", opacity: 0 }}
             animate={{ x: "100vw", opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 0.5, ease: EASE_DRAPE, times: [0, 0.15, 0.85, 1] }}
+            transition={{ duration: 0.9, ease: EASE_DRAPE, times: [0, 0.15, 0.85, 1] }}
           />
         </AnimatePresence>
       )}

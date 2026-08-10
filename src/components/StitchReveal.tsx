@@ -4,7 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import { useId, type ReactNode } from "react";
 import { EASE_DRAPE, EASE_STITCH } from "@/lib/motion";
 
-const STITCH_DURATION = 2;
+const STITCH_DURATION = 1.3;
 const BOB_TIMES = [0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 1];
 const LINE_LENGTH = 300;
 
