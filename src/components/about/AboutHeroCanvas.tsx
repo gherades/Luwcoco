@@ -16,7 +16,10 @@ const legOffsetY = Math.cos(SPLAY) * (LEG_LEN / 2);
 const tipOffsetX = Math.sin(SPLAY) * LEG_LEN;
 const tipOffsetY = Math.cos(SPLAY) * LEG_LEN;
 
-const BRASS = { color: "#caa46e", metalness: 0.85, roughness: 0.28 } as const;
+// Matte, not metallic: a cyanotype print is pale line on blue paper, not a
+// jewellery render. The 2D CompassMark this extrudes is a plain ink-coloured
+// line icon with a single coral dot — the 3D piece should read the same way.
+const LINE_MATERIAL = { color: "#dce7ee", metalness: 0, roughness: 1 } as const;
 
 function easeOutBack(t: number) {
   const c1 = 1.70158;
@@ -44,7 +47,12 @@ function CompassRig({ scrollRef }: { scrollRef: RefObject<number> }) {
     tilt.current.rotation.x += (targetRotX - tilt.current.rotation.x) * 0.06;
     rig.current.position.y = -scrollP * 0.6;
 
-    state.camera.position.z = 6.2 + scrollP * 2.2;
+    // On narrow (portrait/mobile) canvases the same distance crops the
+    // compass into unreadable fragments — pull back further the taller
+    // and narrower the frame gets.
+    const aspect = state.size.width / state.size.height;
+    const portraitPullback = Math.min(2.6, Math.max(0, (1 - aspect) * 3.2));
+    state.camera.position.z = 6.8 + portraitPullback + scrollP * 2.2;
     state.camera.lookAt(0, 0, 0);
   });
 
@@ -53,7 +61,7 @@ function CompassRig({ scrollRef }: { scrollRef: RefObject<number> }) {
       <group ref={tilt}>
         <mesh position={[0, HINGE_Y, 0]}>
           <sphereGeometry args={[0.16, 24, 24]} />
-          <meshStandardMaterial {...BRASS} />
+          <meshStandardMaterial {...LINE_MATERIAL} />
         </mesh>
 
         <mesh
@@ -61,14 +69,14 @@ function CompassRig({ scrollRef }: { scrollRef: RefObject<number> }) {
           rotation={[0, 0, SPLAY]}
         >
           <cylinderGeometry args={[0.045, 0.06, LEG_LEN, 12]} />
-          <meshStandardMaterial {...BRASS} />
+          <meshStandardMaterial {...LINE_MATERIAL} />
         </mesh>
         <mesh
           position={[legOffsetX, HINGE_Y - legOffsetY, 0]}
           rotation={[0, 0, -SPLAY]}
         >
           <cylinderGeometry args={[0.045, 0.06, LEG_LEN, 12]} />
-          <meshStandardMaterial {...BRASS} />
+          <meshStandardMaterial {...LINE_MATERIAL} />
         </mesh>
 
         <mesh
@@ -76,7 +84,7 @@ function CompassRig({ scrollRef }: { scrollRef: RefObject<number> }) {
           rotation={[0, 0, SPLAY]}
         >
           <boxGeometry args={[0.32, 0.05, 0.05]} />
-          <meshStandardMaterial {...BRASS} />
+          <meshStandardMaterial {...LINE_MATERIAL} />
         </mesh>
 
         <mesh position={[tipOffsetX, HINGE_Y - tipOffsetY, 0]}>
@@ -84,14 +92,15 @@ function CompassRig({ scrollRef }: { scrollRef: RefObject<number> }) {
           <meshStandardMaterial
             color="#e17a44"
             emissive="#e17a44"
-            emissiveIntensity={1.4}
-            roughness={0.3}
+            emissiveIntensity={0.5}
+            roughness={0.8}
+            metalness={0}
           />
         </mesh>
         <pointLight
           position={[tipOffsetX, HINGE_Y - tipOffsetY, 0.3]}
-          intensity={1.4}
-          distance={2.5}
+          intensity={0.5}
+          distance={1.6}
           color="#e17a44"
         />
       </group>
@@ -131,20 +140,20 @@ export function AboutHeroCanvas({ scrollRef }: { scrollRef: RefObject<number> })
     <Canvas
       dpr={[1, 1.5]}
       gl={{ antialias: true, powerPreference: "high-performance" }}
-      camera={{ position: [0, 0.3, 6.2], fov: 38 }}
+      camera={{ position: [0, 0.3, 7.5], fov: 38 }}
     >
       <color attach="background" args={["#0b1f33"]} />
       <fog attach="fog" args={["#0b1f33", 5.5, 13]} />
-      <ambientLight intensity={0.3} color="#3a5c78" />
-      <hemisphereLight args={["#3a6f96", "#050d16", 0.5]} />
-      <pointLight position={[1.8, 2.2, 2.4]} intensity={2.4} color="#e17a44" distance={9} decay={2} />
-      <directionalLight position={[-4, 2.5, -2]} intensity={0.7} color="#6fa3c4" />
+      <ambientLight intensity={0.85} color="#5c86a3" />
+      <hemisphereLight args={["#5b93ba", "#0a1c2d", 0.85]} />
+      <pointLight position={[1.8, 2.2, 2.4]} intensity={0.9} color="#e17a44" distance={9} decay={2} />
+      <directionalLight position={[-4, 2.5, -2]} intensity={0.55} color="#8fbdd8" />
 
       <Suspense fallback={null}>
         <CompassRig scrollRef={scrollRef} />
         <PatternCards />
-        <Sparkles count={70} scale={[7, 4.5, 6]} size={2.2} speed={0.25} color="#e17a44" opacity={0.5} />
-        <Sparkles count={50} scale={[8, 5, 7]} size={1.6} speed={0.15} color="#6fa3c4" opacity={0.35} />
+        <Sparkles count={60} scale={[7, 4.5, 6]} size={1.1} speed={0.2} color="#e17a44" opacity={0.35} />
+        <Sparkles count={45} scale={[8, 5, 7]} size={0.9} speed={0.12} color="#6fa3c4" opacity={0.28} />
         <Grid
           position={[0, -1.7, 0]}
           args={[1, 1]}
