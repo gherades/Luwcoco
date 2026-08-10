@@ -60,3 +60,42 @@ export function PinIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function SketchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 42c6-16 14-24 20-24s16 10 16 22" strokeDasharray="3 4" />
+      <path d="M36 12 48 6" />
+      <circle cx="49" cy="5" r="2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function PatternPieceIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M16 20 40 16 46 40 20 46 12 30Z" strokeDasharray="4 3" />
+      <path d="M10 12v6M10 12h6M50 10v6M50 10h-6" />
+    </svg>
+  );
+}
+
+export function FabricFoldIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 24c4-4 8 4 12 0s8-4 12 0 8 4 12 0" />
+      <rect x="12" y="24" width="36" height="20" rx="2" />
+    </svg>
+  );
+}
+
+export function HangerIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="30" cy="10" r="3" />
+      <path d="M30 13v4" />
+      <path d="M10 34 30 17 50 34" />
+      <path d="M14 34h32l-4 14H18Z" />
+    </svg>
+  );
+}

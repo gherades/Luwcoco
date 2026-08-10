@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { ProductGrid } from "@/components/ProductGrid";
+import { ProcessStrip } from "@/components/ProcessStrip";
 import { HowItWorks } from "@/components/HowItWorks";
 import { About } from "@/components/About";
 import { Testimonials } from "@/components/Testimonials";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ProcessStrip />
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <FadeIn className="mb-10 flex flex-col items-center gap-2 text-center">
