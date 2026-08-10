@@ -10,6 +10,7 @@ import { getProduct } from "@/lib/products";
 import { withBasePath } from "@/lib/basePath";
 import { EASE_DRAPE } from "@/lib/motion";
 import {
+  cartDiscount,
   getCartServerSnapshot,
   getCartSnapshot,
   removeFromCart,
@@ -41,6 +42,9 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
     .filter((l): l is { item: (typeof items)[number]; product: NonNullable<ReturnType<typeof getProduct>> } => !!l.product);
 
   const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.item.qty, 0);
+  const totalUnits = lines.reduce((sum, l) => sum + l.item.qty, 0);
+  const discount = cartDiscount(lines.map((l) => ({ price: l.product.price, qty: l.item.qty })));
+  const total = subtotal - discount.amount;
 
   return (
     <AnimatePresence>
@@ -139,12 +143,31 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
 
             {lines.length > 0 && (
               <div className="border-t border-line px-5 py-4">
+                {totalUnits === 1 && (
+                  <p className="mb-3 rounded-lg bg-coral/10 px-3 py-2 text-xs text-ink-soft">
+                    Añade otro patrón y el más económico de los dos se queda con un{" "}
+                    <strong className="text-coral">20% de descuento</strong>.
+                  </p>
+                )}
+
                 <div className="flex items-center justify-between font-mono text-sm">
                   <span className="uppercase tracking-wide text-ink-soft">Subtotal</span>
                   <span className="text-ink">{subtotal.toFixed(2)}€</span>
                 </div>
 
-                {lines.length === 1 && lines[0].product.paymentLink ? (
+                {discount.eligible && (
+                  <div className="mt-1 flex items-center justify-between font-mono text-sm text-coral">
+                    <span className="uppercase tracking-wide">Descuento 2º patrón (20%)</span>
+                    <span>−{discount.amount.toFixed(2)}€</span>
+                  </div>
+                )}
+
+                <div className="mt-1 flex items-center justify-between font-mono text-base">
+                  <span className="uppercase tracking-wide text-ink-soft">Total</span>
+                  <span className="text-ink">{total.toFixed(2)}€</span>
+                </div>
+
+                {totalUnits === 1 && lines[0].product.paymentLink ? (
                   <a
                     href={lines[0].product.paymentLink}
                     target="_blank"
@@ -152,7 +175,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
                   >
                     <Lock size={15} />
-                    Comprar · {subtotal.toFixed(2)}€
+                    Comprar · {total.toFixed(2)}€
                   </a>
                 ) : (
                   <button
@@ -160,16 +183,16 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
                   >
                     <Lock size={15} />
-                    Comprar · {subtotal.toFixed(2)}€
+                    Comprar · {total.toFixed(2)}€
                   </button>
                 )}
 
                 {showNotice && (
                   <p className="mt-3 rounded-lg bg-cream-dim px-3 py-2 text-xs text-ink-soft">
-                    Demo: un solo pago para varios patrones distintos necesita crear la sesión de
-                    Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los
-                    Stripe Payment Links son enlaces fijos y este sitio no tiene backend. Con un
-                    solo patrón en el carrito, el botón sí abre su enlace de pago real.
+                    {discount.eligible
+                      ? "Demo: un pago con el descuento ya aplicado (o con varios patrones distintos) necesita crear la sesión de Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los Stripe Payment Links son enlaces fijos y este sitio no tiene backend."
+                      : "Demo: un solo pago para varios patrones distintos necesita crear la sesión de Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los Stripe Payment Links son enlaces fijos y este sitio no tiene backend."}{" "}
+                    Con un solo patrón en el carrito, el botón sí abre su enlace de pago real.
                   </p>
                 )}
 

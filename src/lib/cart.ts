@@ -60,3 +60,23 @@ export function setQty(slug: string, qty: number) {
 export function cartCount(items: CartItem[]) {
   return items.reduce((sum, item) => sum + item.qty, 0);
 }
+
+const SECOND_PATTERN_DISCOUNT = 0.2;
+
+/**
+ * Promo "compra un patrón y el segundo, el más económico, tiene un 20% de
+ * descuento": se aplica una única vez por pedido (no por pareja), sobre la
+ * unidad más barata del carrito, en cuanto hay 2 o más unidades en total.
+ */
+export function cartDiscount(lines: { price: number; qty: number }[]) {
+  const unitPrices = lines.flatMap((l) => Array(l.qty).fill(l.price));
+  if (unitPrices.length < 2) {
+    return { eligible: false as const, amount: 0, cheapestPrice: 0 };
+  }
+  const cheapestPrice = Math.min(...unitPrices);
+  return {
+    eligible: true as const,
+    amount: cheapestPrice * SECOND_PATTERN_DISCOUNT,
+    cheapestPrice,
+  };
+}
