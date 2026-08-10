@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { PatternIcon } from "./PatternIcon";
+import { AddToCartButton } from "./AddToCartButton";
+import { QuickBuyButton } from "./QuickBuyButton";
 import { levelLabels, type Product } from "@/lib/products";
 import { withBasePath } from "@/lib/basePath";
 
@@ -71,6 +73,11 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           </span>
         </div>
       </Link>
+
+      <div className="mt-3 flex gap-2">
+        <AddToCartButton slug={product.slug} compact />
+        <QuickBuyButton slug={product.slug} paymentLink={product.paymentLink} />
+      </div>
     </motion.div>
   );
 }

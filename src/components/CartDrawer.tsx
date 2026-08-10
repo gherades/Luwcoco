@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Minus, Plus, X } from "lucide-react";
+import { Lock, Minus, Plus, X } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { getProduct } from "@/lib/products";
 import { withBasePath } from "@/lib/basePath";
@@ -19,15 +19,22 @@ import {
 
 export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useSyncExternalStore(subscribeCart, getCartSnapshot, getCartServerSnapshot);
+  const [showNotice, setShowNotice] = useState(false);
+
+  function handleClose() {
+    setShowNotice(false);
+    onClose();
+  }
 
   useEffect(() => {
     if (!open) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") handleClose();
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const lines = items
     .map((item) => ({ item, product: getProduct(item.slug) }))
@@ -45,7 +52,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            onClick={onClose}
+            onClick={handleClose}
           />
           <motion.aside
             className="fixed inset-y-0 right-0 z-[71] flex w-full max-w-sm flex-col bg-cream shadow-xl"
@@ -58,7 +65,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
           >
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
               <span className="font-display text-lg font-medium">Tu carrito</span>
-              <button aria-label="Cerrar carrito" onClick={onClose} className="p-1 text-ink-soft hover:text-ink">
+              <button aria-label="Cerrar carrito" onClick={handleClose} className="p-1 text-ink-soft hover:text-ink">
                 <X size={20} />
               </button>
             </div>
@@ -68,7 +75,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                 <p className="text-ink-soft">Todavía no has añadido ningún patrón.</p>
                 <Link
                   href="/patrones"
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
                 >
                   Ver patrones
@@ -136,41 +143,39 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                   <span className="uppercase tracking-wide text-ink-soft">Subtotal</span>
                   <span className="text-ink">{subtotal.toFixed(2)}€</span>
                 </div>
-                <p className="mt-2 text-xs text-ink-soft">
-                  Cada patrón se paga por separado con su propio enlace de Stripe — sin
-                  carrito combinado en esta demo.
-                </p>
-                <div className="mt-3 space-y-2">
-                  {lines.map(({ item, product }) =>
-                    product.paymentLink ? (
-                      <a
-                        key={item.slug}
-                        href={product.paymentLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between rounded-full bg-ink px-4 py-2 text-xs font-semibold text-cream transition-colors hover:bg-thread-dark"
-                      >
-                        Comprar {product.name}
-                      </a>
-                    ) : (
-                      <div
-                        key={item.slug}
-                        className="flex items-center justify-between rounded-full border border-line bg-cream-dim px-4 py-2 text-xs text-ink-soft"
-                      >
-                        <span>Comprar {product.name}</span>
-                        <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft/70">
-                          enlace pendiente
-                        </span>
-                      </div>
-                    )
-                  )}
-                </div>
-                {lines.some((l) => !l.product.paymentLink) && (
-                  <p className="mt-2 text-[11px] text-ink-soft/70">
-                    Demo: los Stripe Payment Links se crean en dashboard.stripe.com/payment-links,
-                    sin backend.
+
+                {lines.length === 1 && lines[0].product.paymentLink ? (
+                  <a
+                    href={lines[0].product.paymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
+                  >
+                    <Lock size={15} />
+                    Comprar todo · {subtotal.toFixed(2)}€
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => setShowNotice(true)}
+                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
+                  >
+                    <Lock size={15} />
+                    Comprar todo · {subtotal.toFixed(2)}€
+                  </button>
+                )}
+
+                {showNotice && (
+                  <p className="mt-3 rounded-lg bg-cream-dim px-3 py-2 text-xs text-ink-soft">
+                    Demo: un solo pago para varios patrones distintos necesita crear la sesión de
+                    Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los
+                    Stripe Payment Links son enlaces fijos y este sitio no tiene backend. Con un
+                    solo patrón en el carrito, el botón sí abre su enlace de pago real.
                   </p>
                 )}
+
+                <p className="mt-3 text-center text-xs text-ink-soft">
+                  Entrega digital inmediata tras el pago. Pago seguro procesado por Stripe.
+                </p>
               </div>
             )}
           </motion.aside>
