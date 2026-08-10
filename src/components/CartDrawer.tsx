@@ -152,7 +152,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
                   >
                     <Lock size={15} />
-                    Comprar todo · {subtotal.toFixed(2)}€
+                    Comprar · {subtotal.toFixed(2)}€
                   </a>
                 ) : (
                   <button
@@ -160,7 +160,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
                   >
                     <Lock size={15} />
-                    Comprar todo · {subtotal.toFixed(2)}€
+                    Comprar · {subtotal.toFixed(2)}€
                   </button>
                 )}
 
