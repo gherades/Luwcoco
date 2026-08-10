@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PatternIcon } from "./PatternIcon";
+import { EASE_DRAPE } from "@/lib/motion";
 
 const floating = [
   { icon: "duffbag" as const, className: "left-[6%] top-[18%] h-20 w-20 sm:h-24 sm:w-24", delay: 0 },
@@ -31,8 +32,8 @@ export function Hero() {
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] backdrop-blur"
+          transition={{ duration: 0.6, ease: EASE_DRAPE }}
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] backdrop-blur"
         >
           Patrones digitales · PDF + vídeo
         </motion.span>
@@ -40,7 +41,7 @@ export function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: EASE_DRAPE }}
           className="text-balance font-display text-5xl font-medium leading-[1.05] sm:text-7xl"
         >
           anímate a{" "}
@@ -50,7 +51,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
+          transition={{ duration: 0.7, delay: 0.25, ease: EASE_DRAPE }}
           className="mt-6 max-w-xl text-balance text-lg text-cream/85"
         >
           Patrones de costura paso a paso, pensados para que crees tu propio
@@ -60,7 +61,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: EASE_DRAPE }}
           className="mt-9 flex flex-col gap-3 sm:flex-row"
         >
           <Link

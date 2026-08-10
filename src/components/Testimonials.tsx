@@ -29,10 +29,10 @@ export function Testimonials() {
         <FadeIn className="mb-14 grid gap-6 rounded-2xl border border-line bg-cream-dim p-8 text-center sm:grid-cols-3 sm:p-10">
           {stats.map((s) => (
             <div key={s.label}>
-              <div className="font-display text-3xl font-medium sm:text-4xl">
+              <div className="font-mono text-3xl text-thread sm:text-4xl">
                 {s.value}
               </div>
-              <div className="mt-1 text-sm text-ink-soft">{s.label}</div>
+              <div className="mt-1 font-mono text-xs uppercase tracking-wide text-ink-soft">{s.label}</div>
             </div>
           ))}
         </FadeIn>

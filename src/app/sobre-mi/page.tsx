@@ -23,7 +23,7 @@ export default function SobreMiPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 lg:px-24">
       <FadeIn>
-        <span className="text-xs uppercase tracking-[0.2em] text-thread">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-thread">
           Sobre mí
         </span>
         <h1 className="mt-3 font-display text-4xl font-medium sm:text-5xl">

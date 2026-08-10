@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #faf6f0;
-  --color-cream-dim: #f2ece2;
-  --color-ink: #201d1a;
-  --color-ink-soft: #55504a;
-  --color-thread: #45647d;
-  --color-thread-dark: #2f4a5f;
-  --color-coral: #d9805c;
-  --color-blush: #f0bcc4;
-  --color-denim: #c3d3dc;
-  --color-line: #e4dcd0;
+  /* Paleta "Plano y Taller": la mesa de dibujo — muselina, tinta grafito,
+     azul plano y un único acento de hilo coral. */
+  --color-cream: #f3eee7;
+  --color-cream-dim: #ece3d3;
+  --color-ink: #292520;
+  --color-ink-soft: #6b6255;
+  --color-thread: #3e6e8e;
+  --color-thread-dark: #274a63;
+  --color-coral: #bb5a2c;
+  --color-blush: #e3b79e;
+  --color-denim: #d7e3ea;
+  --color-line: #d9cdb8;
 }
 
 @theme inline {
@@ -26,6 +28,7 @@
   --color-line: var(--color-line);
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {

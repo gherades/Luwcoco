@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
+import { EASE_DRAPE } from "@/lib/motion";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -26,7 +27,7 @@ export function FadeIn({
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       variants={variants}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay, ease: EASE_DRAPE }}
       className={className}
     >
       {children}

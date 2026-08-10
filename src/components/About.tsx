@@ -16,7 +16,7 @@ export function About() {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <span className="text-xs uppercase tracking-[0.2em] text-blush">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-blush">
             Sobre mí
           </span>
           <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl">

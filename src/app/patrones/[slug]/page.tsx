@@ -47,37 +47,42 @@ export default async function ProductPage({
 
         <FadeIn delay={0.1} className="sm:sticky sm:top-24">
           {(product.isNew || product.isBestseller) && (
-            <span className="mb-3 inline-block rounded-full bg-ink px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cream">
+            <span className="mb-3 inline-block rounded-full bg-ink px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-cream">
               {product.isNew ? "Nuevo" : "Top ventas"}
             </span>
           )}
 
           <h1 className="font-display text-4xl font-medium">{product.name}</h1>
           <p className="mt-1 text-lg text-ink-soft">{product.subtitle}</p>
-          <p className="mt-4 font-display text-3xl">{product.price.toFixed(2)}€</p>
+          <p className="mt-4 font-mono text-3xl text-ink">{product.price.toFixed(2)}€</p>
 
           <p className="mt-6 text-ink-soft">{product.description}</p>
 
-          <div className="mt-8 space-y-3 rounded-2xl border border-line bg-cream-dim p-5 text-sm">
-            <div className="flex items-center gap-3">
-              <Ruler size={16} className="text-thread" />
-              <span>
-                Nivel: <strong>{levelLabels[product.level]}</strong>
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <FileText size={16} className="text-thread" />
-              <span>{product.fabric}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <PlayCircle size={16} className="text-thread" />
-              {product.videoUrl ? (
-                <a href="#video" className="underline underline-offset-2 hover:text-ink">
-                  {product.format} — ver vídeo tutorial
-                </a>
-              ) : (
-                <span>{product.format}</span>
-              )}
+          <div className="mt-8 rounded-2xl border border-line bg-cream-dim p-5">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-coral">
+              Ficha técnica
+            </span>
+            <div className="mt-3 space-y-3 font-mono text-[13px] uppercase tracking-wide text-ink-soft">
+              <div className="flex items-center gap-3">
+                <Ruler size={16} className="text-thread" />
+                <span>
+                  Nivel · <strong className="text-ink">{levelLabels[product.level]}</strong>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FileText size={16} className="text-thread" />
+                <span>{product.fabric}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <PlayCircle size={16} className="text-thread" />
+                {product.videoUrl ? (
+                  <a href="#video" className="underline underline-offset-2 hover:text-ink">
+                    {product.format} — ver vídeo tutorial
+                  </a>
+                ) : (
+                  <span>{product.format}</span>
+                )}
+              </div>
             </div>
           </div>
 

@@ -28,7 +28,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           }`}
         >
           {(product.isNew || product.isBestseller) && (
-            <span className="absolute left-3 top-3 z-10 rounded-full bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-cream">
+            <span className="absolute left-3 top-3 z-10 rounded-full bg-ink px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-wide text-cream">
               {product.isNew ? "Nuevo" : "Top ventas"}
             </span>
           )}
@@ -46,8 +46,8 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               className="h-28 w-28 text-ink/70 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 sm:h-36 sm:w-36"
             />
           )}
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-cream/90 px-4 py-2 text-[11px] font-medium text-ink-soft backdrop-blur">
-            <span>Nivel: {levelLabels[product.level]}</span>
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-cream/90 px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink-soft backdrop-blur">
+            <span>Nivel · {levelLabels[product.level]}</span>
             <span className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((n) => (
                 <span
@@ -66,7 +66,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             </h3>
             <p className="text-sm text-ink-soft">{product.subtitle}</p>
           </div>
-          <span className="whitespace-nowrap font-display text-lg">
+          <span className="whitespace-nowrap font-mono text-base text-ink">
             {product.price.toFixed(2)}€
           </span>
         </div>

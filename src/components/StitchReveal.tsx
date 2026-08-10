@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { useId, type ReactNode } from "react";
+import { EASE_DRAPE, EASE_STITCH } from "@/lib/motion";
 
 const STITCH_DURATION = 2;
 const BOB_TIMES = [0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 1];
@@ -15,7 +16,7 @@ const revealVariants: Variants = {
   hidden: { width: 0 },
   visible: (startAt: number) => ({
     width: LINE_LENGTH,
-    transition: { duration: STITCH_DURATION, delay: startAt, ease: "linear" },
+    transition: { duration: STITCH_DURATION, delay: startAt, ease: EASE_STITCH },
   }),
 };
 
@@ -26,7 +27,7 @@ const needleVariants: Variants = {
     top: ["50%", "15%", "50%", "85%", "50%", "15%", "50%", "38%"],
     rotate: [-55, -20, -55, -85, -55, -20, -55, -70],
     opacity: [0, 1, 1, 1, 1, 1, 1, 1],
-    transition: { duration: STITCH_DURATION, delay: startAt, ease: "linear", times: BOB_TIMES },
+    transition: { duration: STITCH_DURATION, delay: startAt, ease: EASE_STITCH, times: BOB_TIMES },
   }),
 };
 
@@ -35,7 +36,7 @@ const knotVariants: Variants = {
   visible: (startAt: number) => ({
     r: 4,
     opacity: 1,
-    transition: { duration: 0.3, delay: startAt, ease: "backOut" },
+    transition: { duration: 0.3, delay: startAt, ease: EASE_DRAPE },
   }),
 };
 
@@ -44,7 +45,7 @@ const textVariants: Variants = {
   visible: (startAt: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: startAt, ease: "easeOut" },
+    transition: { duration: 0.5, delay: startAt, ease: EASE_DRAPE },
   }),
 };
 

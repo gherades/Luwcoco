@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { EASE_DRAPE } from "@/lib/motion";
 
 export function SewingDoodle({
   children,
@@ -19,7 +20,7 @@ export function SewingDoodle({
       initial={{ opacity: 0, scale: 0.4, rotate: rotate - 20 }}
       whileInView={{ opacity: 1, scale: 1, rotate }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: "backOut" }}
+      transition={{ duration: 0.7, delay, ease: EASE_DRAPE }}
       className={className}
     >
       <motion.div
