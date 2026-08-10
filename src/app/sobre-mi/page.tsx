@@ -75,7 +75,7 @@ export default function SobreMiPage() {
           </p>
         </SewingSection>
 
-        <FadeIn delay={0.1} className="relative rounded-3xl bg-thread-dark px-6 py-10 text-center text-cream sm:px-12">
+        <FadeIn delay={0.1} className="relative rounded-3xl bg-thread-dark px-6 py-10 text-center text-paper sm:px-12">
           <SewingDoodle
             rotate={14}
             delay={0.2}
@@ -85,7 +85,7 @@ export default function SobreMiPage() {
           </SewingDoodle>
           <StitchReveal
             delay={0.15}
-            threadClassName="stroke-cream/60"
+            threadClassName="stroke-paper/60"
             needleClassName="text-blush"
             knotClassName="fill-blush"
           >
@@ -128,7 +128,7 @@ export default function SobreMiPage() {
           {photos.map((photo, i) => (
             <FadeIn key={photo.src} delay={i * 0.1}>
               <div
-                className="overflow-hidden rounded-2xl border-4 border-cream bg-cream shadow-md"
+                className="overflow-hidden rounded-2xl border-4 border-paper bg-paper shadow-md"
                 style={{ transform: `rotate(${photo.rotate}deg)` }}
               >
                 <div className="relative aspect-[3/4]">

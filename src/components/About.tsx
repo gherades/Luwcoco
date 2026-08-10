@@ -4,12 +4,12 @@ import { PatternIcon } from "./PatternIcon";
 
 export function About() {
   return (
-    <section className="bg-thread-dark py-20 text-cream">
+    <section className="bg-thread-dark py-20 text-paper">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:grid-cols-2 sm:items-center sm:px-8">
         <FadeIn>
-          <div className="relative flex aspect-square items-center justify-center rounded-2xl bg-cream/10">
-            <PatternIcon icon="totebag" className="h-40 w-40 text-cream/70" animated />
-            <span className="absolute bottom-6 rounded-full bg-cream px-4 py-1.5 text-xs font-medium text-ink">
+          <div className="relative flex aspect-square items-center justify-center rounded-2xl bg-paper/10">
+            <PatternIcon icon="totebag" className="h-40 w-40 text-paper/70" animated />
+            <span className="absolute bottom-6 rounded-full bg-paper px-4 py-1.5 text-xs font-medium text-graphite">
               foto de estudio próximamente
             </span>
           </div>
@@ -22,7 +22,7 @@ export function About() {
           <h2 className="mt-3 font-display text-3xl font-medium sm:text-4xl">
             Soy Lucía, arquitecta de día, costurera siempre
           </h2>
-          <p className="mt-4 text-cream/80">
+          <p className="mt-4 text-paper/80">
             En 2020 saqué del armario una máquina de coser que llevaba años
             esperando su momento. No imaginé que terminaría cambiando mi
             vida por completo. Hoy diseño patrones y te acompaño paso a paso
@@ -30,7 +30,7 @@ export function About() {
           </p>
           <Link
             href="/sobre-mi"
-            className="mt-6 inline-block rounded-full border border-cream/40 px-6 py-2.5 text-sm font-semibold transition-colors hover:bg-cream/10"
+            className="mt-6 inline-block rounded-full border border-paper/40 px-6 py-2.5 text-sm font-semibold transition-colors hover:bg-paper/10"
           >
             Conoce mi historia
           </Link>

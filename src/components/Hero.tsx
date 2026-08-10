@@ -14,13 +14,13 @@ const floating = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-thread-dark text-cream">
+    <section className="relative overflow-hidden bg-thread-dark text-paper">
       <div className="absolute inset-0 opacity-90 [background:radial-gradient(circle_at_20%_20%,#3d5b73,transparent_55%),radial-gradient(circle_at_80%_75%,#59738a,transparent_50%)]" />
 
       {floating.map((f, i) => (
         <motion.div
           key={i}
-          className={`pointer-events-none absolute hidden text-cream/25 sm:block ${f.className}`}
+          className={`pointer-events-none absolute hidden text-paper/25 sm:block ${f.className}`}
           animate={{ y: [0, -14, 0], rotate: [0, 4, 0] }}
           transition={{ duration: 6, delay: f.delay, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -33,7 +33,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_DRAPE }}
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] backdrop-blur"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-paper/25 bg-paper/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] backdrop-blur"
         >
           Patrones digitales · PDF + vídeo
         </motion.span>
@@ -52,7 +52,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: EASE_DRAPE }}
-          className="mt-6 max-w-xl text-balance text-lg text-cream/85"
+          className="mt-6 max-w-xl text-balance text-lg text-paper/85"
         >
           Patrones de costura paso a paso, pensados para que crees tu propio
           armario desde cero — sin importar tu nivel.
@@ -66,13 +66,13 @@ export function Hero() {
         >
           <Link
             href="/patrones"
-            className="rounded-full bg-coral px-7 py-3 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] hover:bg-coral/90"
+            className="rounded-full bg-coral px-7 py-3 text-sm font-semibold text-graphite transition-transform hover:scale-[1.03] hover:bg-coral/90"
           >
             Ver patrones
           </Link>
           <Link
             href="/sobre-mi"
-            className="rounded-full border border-cream/40 px-7 py-3 text-sm font-semibold text-cream transition-colors hover:bg-cream/10"
+            className="rounded-full border border-paper/40 px-7 py-3 text-sm font-semibold text-paper transition-colors hover:bg-paper/10"
           >
             Conóceme
           </Link>

@@ -41,7 +41,7 @@ export function VideoEmbed({ videoUrl, title }: { videoUrl: string; title: strin
       <CutMark className="absolute bottom-2 left-2 -scale-y-100 text-thread-dark/70" />
       <CutMark className="absolute bottom-2 right-2 -scale-x-100 -scale-y-100 text-thread-dark/70" />
 
-      <div className="relative aspect-video overflow-hidden rounded-2xl border-2 border-dashed border-cream bg-ink">
+      <div className="relative aspect-video overflow-hidden rounded-2xl border-2 border-dashed border-paper bg-graphite">
         <iframe
           src={embedUrl}
           title={title}

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Paleta "Plano y Taller": la mesa de dibujo — muselina, tinta grafito,
-     azul plano y un único acento de hilo coral. */
+  /* Paleta "Plano y Taller": dos estados reales de la marca — la mesa de
+     dibujo de día (muselina, tinta grafito) y el cianotipo de noche (azul
+     profundo, trazo pálido). Estos tokens invierten con el tema. */
   --color-cream: #f3eee7;
   --color-cream-dim: #ece3d3;
   --color-ink: #292520;
@@ -10,9 +11,30 @@
   --color-thread: #3e6e8e;
   --color-thread-dark: #274a63;
   --color-coral: #bb5a2c;
+  --color-line: #d9cdb8;
+
+  /* No invierten con el tema: blush y denim son lavados decorativos
+     pensados sobre franjas u objetos concretos (no texto), y paper/graphite
+     son el "siempre claro" / "siempre oscuro" fijo para las franjas
+     editoriales permanentemente oscuras (Hero, Sobre mí, el vídeo) donde el
+     contraste no puede depender del tema. */
   --color-blush: #e3b79e;
   --color-denim: #d7e3ea;
-  --color-line: #d9cdb8;
+  --color-paper: #f7f3ec;
+  --color-graphite: #201d1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-cream: #102943;
+    --color-cream-dim: #163455;
+    --color-ink: #dfe9f0;
+    --color-ink-soft: #8fa9bc;
+    --color-thread: #6fa3c4;
+    --color-thread-dark: #0b2138;
+    --color-coral: #e17a44;
+    --color-line: #23496b;
+  }
 }
 
 @theme inline {
@@ -26,6 +48,8 @@
   --color-blush: var(--color-blush);
   --color-denim: var(--color-denim);
   --color-line: var(--color-line);
+  --color-paper: var(--color-paper);
+  --color-graphite: var(--color-graphite);
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
