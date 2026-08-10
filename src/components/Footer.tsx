@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CookiePreferencesLink } from "./CookiePreferencesLink";
+import { CompassMark } from "./SewingMotifs";
 
 function InstagramIcon() {
   return (
@@ -26,7 +27,10 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <span className="font-display text-2xl font-semibold">luwcoco</span>
+            <span className="inline-flex items-center gap-2">
+              <CompassMark className="h-5 w-5 text-ink-soft" />
+              <span className="font-display text-2xl font-semibold">luwcoco</span>
+            </span>
             <p className="mt-3 max-w-xs text-sm text-ink-soft">
               Patrones digitales de costura hechos con cariño desde mi
               estudio. Anímate a coser conmigo.

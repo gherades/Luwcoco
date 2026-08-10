@@ -61,6 +61,20 @@ export function PinIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function CompassMark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 32 32" {...props}>
+      <g fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="16" cy="8" r="3" />
+        <path d="M16 11 9 26" />
+        <path d="M16 11 23 26" />
+        <path d="M6 26h6" />
+      </g>
+      <circle cx="23" cy="26" r="1.6" className="fill-coral" />
+    </svg>
+  );
+}
+
 export function SketchIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>
