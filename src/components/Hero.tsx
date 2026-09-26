@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { PatternIcon } from "./PatternIcon";
 import { EASE_DRAPE } from "@/lib/motion";
+import { withBasePath } from "@/lib/basePath";
 
 const floating = [
   { icon: "duffbag" as const, className: "left-[6%] top-[18%] h-20 w-20 sm:h-24 sm:w-24", delay: 0 },
@@ -16,6 +17,26 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-thread-dark text-paper">
       <div className="absolute inset-0 opacity-90 [background:radial-gradient(circle_at_20%_20%,#3d5b73,transparent_55%),radial-gradient(circle_at_80%_75%,#59738a,transparent_50%)]" />
+
+      {/* Vídeo de fondo en /public/videos/hero.mp4. Se reproduce una vez y se
+          queda en el último plano (la bolsa terminada). Si falta el archivo,
+          se queda el degradado de arriba; con movimiento reducido no se muestra. */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        src={withBasePath("/videos/hero.mp4")}
+        poster={withBasePath("/videos/hero-poster.jpg")}
+        autoPlay
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+
+      {/* Overlay: tiñe el vídeo con el azul de marca y oscurece el centro,
+          donde va el titular, para que el texto claro siempre contraste. */}
+      <div className="absolute inset-0 bg-thread-dark/60" />
+      <div className="absolute inset-0 [background:radial-gradient(ellipse_60%_55%_at_50%_50%,rgb(11_33_56/0.55),transparent_75%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-thread-dark/70 to-transparent" />
 
       {floating.map((f, i) => (
         <motion.div
@@ -44,7 +65,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE_DRAPE }}
           className="text-balance font-display text-5xl font-medium leading-[1.05] sm:text-7xl"
         >
-          anímate a{" "}
+          Anímate a{" "}
           <span className="italic text-blush">coser</span> conmigo
         </motion.h1>
 
