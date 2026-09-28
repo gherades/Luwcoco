@@ -22,6 +22,7 @@ export function ProductGallery({
   return (
     <div>
       <div
+        data-cart-source={images[active]}
         className={`relative aspect-square overflow-hidden rounded-3xl border border-line ${
           isDocument ? "bg-white" : "bg-cream-dim"
         }`}

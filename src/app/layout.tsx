@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
 import { PageTransition } from "@/components/PageTransition";
+import { CartFlightLayer } from "@/components/CartFlightLayer";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <CookieConsent />
+        <CartFlightLayer />
       </body>
     </html>
   );

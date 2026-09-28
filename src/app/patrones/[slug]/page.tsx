@@ -23,7 +23,7 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-      <div className="grid gap-12 sm:grid-cols-2 sm:items-start">
+      <div data-cart-scope className="grid gap-12 sm:grid-cols-2 sm:items-start">
         <FadeIn>
           {product.photoImage ? (
             <ProductGallery
@@ -33,7 +33,9 @@ export default async function ProductPage({
               productName={product.name}
             />
           ) : (
-            <div className="flex aspect-square items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-denim/40 to-cream-dim">
+            <div
+              data-cart-source=""
+              className="flex aspect-square items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-denim/40 to-cream-dim">
               <PatternIcon icon={product.icon} className="h-56 w-56 text-ink/75 sm:h-72 sm:w-72" />
             </div>
           )}
@@ -81,7 +83,7 @@ export default async function ProductPage({
           </div>
 
           <div className="mt-8 space-y-3">
-            <AddToCartButton slug={product.slug} />
+            <AddToCartButton product={product} />
             <CheckoutButton paymentLink={product.paymentLink} />
             <p className="mt-3 text-xs text-ink-soft">
               Entrega digital inmediata tras el pago. Pago seguro procesado

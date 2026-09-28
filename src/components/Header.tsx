@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Fragment, useState, useSyncExternalStore } from "react";
-import { motion } from "framer-motion";
+import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
+import { animate, motion, useMotionValue } from "framer-motion";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { withBasePath } from "@/lib/basePath";
 import { EASE_DRAPE } from "@/lib/motion";
 import { cartCount, getCartServerSnapshot, getCartSnapshot, subscribeCart } from "@/lib/cart";
+import { subscribeLandings } from "@/lib/cartFlight";
 import { CartDrawer } from "./CartDrawer";
 
 const links = [
@@ -23,6 +24,13 @@ export function Header() {
 
   const items = useSyncExternalStore(subscribeCart, getCartSnapshot, getCartServerSnapshot);
   const count = cartCount(items);
+
+  // La bolsa da un pequeño bote cada vez que aterriza un producto en ella.
+  const bump = useMotionValue(1);
+  useEffect(
+    () => subscribeLandings(() => animate(bump, [1, 1.3, 1], { duration: 0.45, ease: "easeOut" })),
+    [bump],
+  );
 
   return (
     <Fragment>
@@ -63,9 +71,11 @@ export function Header() {
             <button aria-label="Buscar" className="hidden p-1 sm:block">
               <Search size={19} />
             </button>
-            <button
+            <motion.button
               aria-label="Carrito"
+              data-cart-target
               className="relative p-1"
+              style={{ scale: bump }}
               onClick={() => setCartOpen(true)}
             >
               <ShoppingBag size={20} />
@@ -80,7 +90,7 @@ export function Header() {
                   {count}
                 </motion.span>
               )}
-            </button>
+            </motion.button>
           </div>
         </div>
 

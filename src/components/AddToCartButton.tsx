@@ -1,64 +1,74 @@
 "use client";
 
-import { useState, type MouseEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState, type MouseEvent } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 import { addToCart } from "@/lib/cart";
-import { EASE_DRAPE } from "@/lib/motion";
+import { flyToCart } from "@/lib/cartFlight";
+import type { Product } from "@/lib/products";
 
+/**
+ * Al pulsar, la imagen del producto (el `data-cart-source` dentro del mismo
+ * `data-cart-scope`) sale volando hasta la bolsa del header, y el botón pasa
+ * a "Añadido" durante un momento.
+ */
 export function AddToCartButton({
-  slug,
+  product,
   compact = false,
 }: {
-  slug: string;
+  product: Product;
   compact?: boolean;
 }) {
-  const [justAdded, setJustAdded] = useState(false);
+  const reduce = useReducedMotion() ?? false;
+  const [added, setAdded] = useState(0);
 
-  function handleClick(e: MouseEvent) {
+  useEffect(() => {
+    if (!added) return;
+    const timer = setTimeout(() => setAdded(0), 1500);
+    return () => clearTimeout(timer);
+  }, [added]);
+
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(slug);
-    setJustAdded(true);
-    window.setTimeout(() => setJustAdded(false), 1400);
+    setAdded((value) => value + 1);
+    if (reduce) {
+      addToCart(product.slug);
+      return;
+    }
+    const button = e.currentTarget;
+    const source =
+      button.closest("[data-cart-scope]")?.querySelector("[data-cart-source]") ?? button;
+    flyToCart(product, source);
   }
 
   return (
-    <button
+    <motion.button
+      type="button"
       onClick={handleClick}
-      className={
-        compact
-          ? "flex flex-1 items-center justify-center gap-1 rounded-full border border-ink px-2 py-1.5 text-[11px] font-semibold text-ink transition-colors hover:bg-ink hover:text-cream"
-          : "flex w-full items-center justify-center gap-2 rounded-full border border-ink px-7 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-cream"
-      }
+      whileTap={{ scale: compact ? 0.92 : 0.97 }}
+      aria-label={`Añadir ${product.name} al carrito`}
+      className={`flex items-center justify-center overflow-hidden rounded-full border font-semibold transition-colors duration-200 ${
+        compact ? "flex-1 px-2 py-1.5 text-[11px]" : "w-full px-7 py-3 text-sm"
+      } ${
+        added
+          ? "border-thread bg-thread text-cream"
+          : "border-ink text-ink hover:bg-ink hover:text-cream"
+      }`}
     >
-      <AnimatePresence mode="wait" initial={false}>
-        {justAdded ? (
-          <motion.span
-            key="added"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 0.25, ease: EASE_DRAPE }}
-            className="flex items-center gap-1.5"
-          >
-            <Check size={compact ? 13 : 16} />
-            {compact ? "Añadido" : "Añadido al carrito"}
-          </motion.span>
-        ) : (
-          <motion.span
-            key="idle"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 0.25, ease: EASE_DRAPE }}
-            className="flex items-center gap-1.5"
-          >
-            <Plus size={compact ? 13 : 16} />
-            {compact ? "Añadir" : "Añadir al carrito"}
-          </motion.span>
-        )}
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={added ? "added" : "add"}
+          className="flex items-center gap-1.5"
+          initial={{ y: 12, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -12, opacity: 0 }}
+          transition={{ duration: 0.18 }}
+        >
+          {added ? <Check size={compact ? 13 : 16} /> : <Plus size={compact ? 13 : 16} />}
+          {added ? (compact ? "Añadido" : "Añadido al carrito") : compact ? "Añadir" : "Añadir al carrito"}
+        </motion.span>
       </AnimatePresence>
-    </button>
+    </motion.button>
   );
 }

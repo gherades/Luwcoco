@@ -18,6 +18,7 @@ const bgByCategory: Record<Product["category"], string> = {
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
   return (
     <motion.div
+      data-cart-scope
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -25,6 +26,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
     >
       <Link href={`/patrones/${product.slug}`} className="group block">
         <div
+          data-cart-source={product.patternImage ?? ""}
           className={`relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl border border-line ${
             product.patternImage ? "bg-cream-dim" : `bg-gradient-to-br ${bgByCategory[product.category]}`
           }`}
@@ -75,7 +77,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       </Link>
 
       <div className="mt-3 flex gap-2">
-        <AddToCartButton slug={product.slug} compact />
+        <AddToCartButton product={product} compact />
         <QuickBuyButton slug={product.slug} paymentLink={product.paymentLink} />
       </div>
     </motion.div>
