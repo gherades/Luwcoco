@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProduct, levelLabels, products } from "@/lib/products";
-import { ScrollAssembly } from "@/components/ScrollAssembly";
+import { PatternIcon } from "@/components/PatternIcon";
 import { ProductGallery } from "@/components/ProductGallery";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { CheckoutButton } from "@/components/CheckoutButton";
@@ -24,27 +24,20 @@ export default async function ProductPage({
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
       <div className="grid gap-12 sm:grid-cols-2 sm:items-start">
-        <div>
-          <ScrollAssembly
-            icon={product.icon}
-            patternImage={product.patternImage}
-            productName={product.name}
-          />
-
-          {product.photoImage && (
-            <FadeIn>
-              <h2 className="mt-2 font-display text-lg font-medium">
-                La bolsa terminada
-              </h2>
-              <ProductGallery
-                photoImage={product.photoImage}
-                gallery={product.gallery}
-                instructionsImage={product.instructionsImage}
-                productName={product.name}
-              />
-            </FadeIn>
+        <FadeIn>
+          {product.photoImage ? (
+            <ProductGallery
+              photoImage={product.photoImage}
+              gallery={product.gallery}
+              instructionsImage={product.instructionsImage}
+              productName={product.name}
+            />
+          ) : (
+            <div className="flex aspect-square items-center justify-center rounded-3xl border border-line bg-gradient-to-br from-denim/40 to-cream-dim">
+              <PatternIcon icon={product.icon} className="h-56 w-56 text-ink/75 sm:h-72 sm:w-72" />
+            </div>
           )}
-        </div>
+        </FadeIn>
 
         <FadeIn delay={0.1} className="sm:sticky sm:top-24">
           {(product.isNew || product.isBestseller) && (

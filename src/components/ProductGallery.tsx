@@ -20,7 +20,7 @@ export function ProductGallery({
   const isDocument = images[active] === instructionsImage;
 
   return (
-    <div className="mt-6">
+    <div>
       <div
         className={`relative aspect-square overflow-hidden rounded-3xl border border-line ${
           isDocument ? "bg-white" : "bg-cream-dim"
