@@ -1,15 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Lock, Minus, Plus, X } from "lucide-react";
-import { useSyncExternalStore } from "react";
-import { getProduct } from "@/lib/products";
-import { withBasePath } from "@/lib/basePath";
+import { SewingCart, type SewingCartItem } from "@/components/cart/sewing-cart";
+import type { GarmentIconName } from "@/components/cart/garment-icons";
+import { getProduct, products, type Product } from "@/lib/products";
 import { EASE_DRAPE } from "@/lib/motion";
 import {
+  addToCart,
   cartDiscount,
   getCartServerSnapshot,
   getCartSnapshot,
@@ -18,7 +17,29 @@ import {
   subscribeCart,
 } from "@/lib/cart";
 
+/** Dibujo de cada tipo de patrón en su sobre del carrito. */
+const garmentIcons: Record<Product["icon"], GarmentIconName> = {
+  duffbag: "duffel",
+  totebag: "tote",
+  pants: "pants",
+  top: "top",
+  skirt: "skirt",
+  pouch: "pouch",
+};
+
+function toCartItem(product: Product, qty: number): SewingCartItem {
+  return {
+    id: product.slug,
+    name: product.name,
+    subtitle: product.subtitle,
+    price: product.price,
+    qty,
+    icon: garmentIcons[product.icon],
+  };
+}
+
 export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const router = useRouter();
   const items = useSyncExternalStore(subscribeCart, getCartSnapshot, getCartServerSnapshot);
   const [showNotice, setShowNotice] = useState(false);
 
@@ -39,12 +60,24 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
 
   const lines = items
     .map((item) => ({ item, product: getProduct(item.slug) }))
-    .filter((l): l is { item: (typeof items)[number]; product: NonNullable<ReturnType<typeof getProduct>> } => !!l.product);
+    .filter((l): l is { item: (typeof items)[number]; product: Product } => !!l.product);
 
-  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.item.qty, 0);
   const totalUnits = lines.reduce((sum, l) => sum + l.item.qty, 0);
   const discount = cartDiscount(lines.map((l) => ({ price: l.product.price, qty: l.item.qty })));
-  const total = subtotal - discount.amount;
+
+  // Sugerencia: el primer superventas que aún no está en el carrito.
+  const suggested =
+    products.find((p) => p.isBestseller && !items.some((i) => i.slug === p.slug)) ??
+    products.find((p) => !items.some((i) => i.slug === p.slug));
+
+  function handleCheckout() {
+    const link = lines[0]?.product.paymentLink;
+    if (totalUnits === 1 && link) {
+      window.location.assign(link);
+      return;
+    }
+    setShowNotice(true);
+  }
 
   return (
     <AnimatePresence>
@@ -67,140 +100,30 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
             role="dialog"
             aria-label="Carrito"
           >
-            <div className="flex items-center justify-between border-b border-line px-5 py-4">
-              <span className="font-display text-lg font-medium">Tu carrito</span>
-              <button aria-label="Cerrar carrito" onClick={handleClose} className="p-1 text-ink-soft hover:text-ink">
-                <X size={20} />
-              </button>
-            </div>
-
-            {lines.length === 0 ? (
-              <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 text-center">
-                <p className="text-ink-soft">Todavía no has añadido ningún patrón.</p>
-                <Link
-                  href="/patrones"
-                  onClick={handleClose}
-                  className="rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
-                >
-                  Ver patrones
-                </Link>
-              </div>
-            ) : (
-              <div className="flex-1 overflow-y-auto px-5 py-4">
-                <ul className="space-y-4">
-                  {lines.map(({ item, product }) => (
-                    <li key={item.slug} className="flex gap-3 border-b border-line pb-4">
-                      <div className="relative h-16 w-14 shrink-0 overflow-hidden rounded-lg border border-line bg-cream-dim">
-                        {product.patternImage && (
-                          <Image
-                            src={withBasePath(product.patternImage)}
-                            alt={product.name}
-                            fill
-                            sizes="56px"
-                            className="object-cover"
-                          />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-display text-sm font-medium leading-tight">{product.name}</p>
-                        <p className="mt-0.5 font-mono text-xs text-ink-soft">
-                          {product.price.toFixed(2)}€ · unidad
-                        </p>
-                        <div className="mt-2 flex items-center gap-3">
-                          <div className="flex items-center gap-2 rounded-full border border-line px-2 py-1">
-                            <button
-                              aria-label="Quitar una unidad"
-                              onClick={() => setQty(item.slug, item.qty - 1)}
-                              className="text-ink-soft hover:text-ink"
-                            >
-                              <Minus size={13} />
-                            </button>
-                            <span className="w-4 text-center font-mono text-xs">{item.qty}</span>
-                            <button
-                              aria-label="Añadir una unidad"
-                              onClick={() => setQty(item.slug, item.qty + 1)}
-                              className="text-ink-soft hover:text-ink"
-                            >
-                              <Plus size={13} />
-                            </button>
-                          </div>
-                          <button
-                            onClick={() => removeFromCart(item.slug)}
-                            className="font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-2 hover:text-coral"
-                          >
-                            Quitar
-                          </button>
-                        </div>
-                      </div>
-                      <span className="whitespace-nowrap font-mono text-sm text-ink">
-                        {(product.price * item.qty).toFixed(2)}€
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {lines.length > 0 && (
-              <div className="border-t border-line px-5 py-4">
-                {totalUnits === 1 && (
-                  <p className="mb-3 rounded-lg bg-coral/10 px-3 py-2 text-xs text-ink-soft">
-                    Añade otro patrón y el más económico de los dos se queda con un{" "}
-                    <strong className="text-coral">20% de descuento</strong>.
-                  </p>
-                )}
-
-                <div className="flex items-center justify-between font-mono text-sm">
-                  <span className="uppercase tracking-wide text-ink-soft">Subtotal</span>
-                  <span className="text-ink">{subtotal.toFixed(2)}€</span>
-                </div>
-
-                {discount.eligible && (
-                  <div className="mt-1 flex items-center justify-between font-mono text-sm text-coral">
-                    <span className="uppercase tracking-wide">Descuento 2º patrón (20%)</span>
-                    <span>−{discount.amount.toFixed(2)}€</span>
-                  </div>
-                )}
-
-                <div className="mt-1 flex items-center justify-between font-mono text-base">
-                  <span className="uppercase tracking-wide text-ink-soft">Total</span>
-                  <span className="text-ink">{total.toFixed(2)}€</span>
-                </div>
-
-                {totalUnits === 1 && lines[0].product.paymentLink ? (
-                  <a
-                    href={lines[0].product.paymentLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
-                  >
-                    <Lock size={15} />
-                    Comprar · {total.toFixed(2)}€
-                  </a>
-                ) : (
-                  <button
-                    onClick={() => setShowNotice(true)}
-                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-thread-dark"
-                  >
-                    <Lock size={15} />
-                    Comprar · {total.toFixed(2)}€
-                  </button>
-                )}
-
-                {showNotice && (
+            <SewingCart
+              className="h-full rounded-none! shadow-none!"
+              items={lines.map((l) => toCartItem(l.product, l.item.qty))}
+              onQtyChange={setQty}
+              onRemove={removeFromCart}
+              onClose={handleClose}
+              onBrowse={() => {
+                handleClose();
+                router.push("/patrones");
+              }}
+              suggestion={suggested ? toCartItem(suggested, 1) : undefined}
+              onAddSuggestion={(item) => addToCart(item.id)}
+              onCheckout={handleCheckout}
+              notice={
+                showNotice && (
                   <p className="mt-3 rounded-lg bg-cream-dim px-3 py-2 text-xs text-ink-soft">
                     {discount.eligible
                       ? "Demo: un pago con el descuento ya aplicado (o con varios patrones distintos) necesita crear la sesión de Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los Stripe Payment Links son enlaces fijos y este sitio no tiene backend."
                       : "Demo: un solo pago para varios patrones distintos necesita crear la sesión de Stripe desde una función ligera (p. ej. Cloudflare Pages Functions), ya que los Stripe Payment Links son enlaces fijos y este sitio no tiene backend."}{" "}
                     Con un solo patrón en el carrito, el botón sí abre su enlace de pago real.
                   </p>
-                )}
-
-                <p className="mt-3 text-center text-xs text-ink-soft">
-                  Entrega digital inmediata tras el pago. Pago seguro procesado por Stripe.
-                </p>
-              </div>
-            )}
+                )
+              }
+            />
           </motion.aside>
         </>
       )}
