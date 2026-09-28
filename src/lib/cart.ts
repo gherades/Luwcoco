@@ -31,8 +31,12 @@ export function getCartSnapshot(): CartItem[] {
   return cache;
 }
 
+// Same rule on the server snapshot: a fresh [] on every call makes React
+// think the store keeps changing.
+const EMPTY_CART: CartItem[] = [];
+
 export function getCartServerSnapshot(): CartItem[] {
-  return [];
+  return EMPTY_CART;
 }
 
 export function addToCart(slug: string) {
